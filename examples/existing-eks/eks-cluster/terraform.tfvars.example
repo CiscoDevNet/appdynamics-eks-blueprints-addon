@@ -1,0 +1,16 @@
+# override the default project variables.
+# aws region.
+#aws_region = "us-east-2"
+
+# desired number of eks worker nodes.
+#aws_eks_desired_node_count = 2
+
+# aws eks node group instance type.
+#aws_eks_instance_type = ["t2.large"]
+
+# kubernetes version to use for the eks cluster.
+# valid aws eks versions are: 1.23, 1.24, 1.25, 1.26, and 1.27.
+#aws_eks_kubernetes_version = "1.27"
+
+# name of ssh public key for eks worker nodes.
+#ssh_pub_key_name = "<your_ssh_pub_key_name_here>"

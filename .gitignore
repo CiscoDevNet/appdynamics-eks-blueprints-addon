@@ -1,0 +1,27 @@
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+
+# ignore terraform configuration and temporary runtime files.
+/builders/**/.terraform
+/builders/**/.terraform.lock.hcl
+/builders/**/*.tfstate*
+/builders/**/*.tfplan
+/builders/**/terraform.tfvars
+
+# ignore appdynamics operators and collectors helm charts.
+/builders/**/collectors-values.yaml
+/builders/**/operators-values.yaml
+
+# ignore photoshop image files.
+/docs/**/*.psd
+
+# macOS .DS_Store files.
+.DS_Store

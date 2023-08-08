@@ -1,0 +1,26 @@
+# override the default project variables.
+# aws region.
+#aws_region = "us-east-2"
+
+# desired number of eks worker nodes.
+#aws_eks_desired_node_count = 2
+
+# aws eks node group instance type.
+#aws_eks_instance_type = ["t2.large"]
+
+# kubernetes version to use for the eks cluster.
+# valid aws eks versions are: 1.23, 1.24, 1.25, 1.26, and 1.27.
+#aws_eks_kubernetes_version = "1.27"
+
+# name of ssh public key for eks worker nodes.
+#ssh_pub_key_name = "<your_ssh_pub_key_name_here>"
+
+# appdynamics cnao kubernetes and app service monitoring solution helm chart variables.
+#cnao_client_id = "<your_cnao_client_id_here>"
+#cnao_client_secret = "<your_cnao_client_secret_here>"
+#cnao_cluster_name = "<your_cnao_cluster_name_here>"
+#cnao_collector_endpoint = "<your_cnao_collector_endpoint_here>"
+#cnao_operators_endpoint = "<your_cnao_operators_endpoint_here>"
+#cnao_install_log_collector = "false"
+#cnao_tenant_id = "<your_cnao_tenant_id_here>"
+#cnao_token_url = "<your_cnao_token_url_here>"
