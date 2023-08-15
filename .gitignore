@@ -10,15 +10,15 @@ Session.vim
 tags
 
 # ignore terraform configuration and temporary runtime files.
-/builders/**/.terraform
-/builders/**/.terraform.lock.hcl
-/builders/**/*.tfstate*
-/builders/**/*.tfplan
-/builders/**/terraform.tfvars
+/examples/**/.terraform
+/examples/**/.terraform.lock.hcl
+/examples/**/*.tfstate*
+/examples/**/*.tfplan
+/examples/**/terraform.tfvars
 
 # ignore appdynamics operators and collectors helm charts.
-/builders/**/collectors-values.yaml
-/builders/**/operators-values.yaml
+/examples/**/collectors-values.yaml
+/examples/**/operators-values.yaml
 
 # ignore photoshop image files.
 /docs/**/*.psd
