@@ -59,7 +59,7 @@ data "aws_iam_openid_connect_provider" "oidc_provider" {
 # Modules ------------------------------------------------------------------------------------------
 module "addons" {
   source  = "aws-ia/eks-blueprints-addons/aws"
-  version = ">= 1.5"
+  version = ">= 1.6"
 
   cluster_name      = data.aws_eks_cluster.cluster.id
   cluster_endpoint  = data.aws_eks_cluster.cluster.endpoint
