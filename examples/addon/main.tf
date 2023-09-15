@@ -75,7 +75,7 @@ data "aws_iam_openid_connect_provider" "oidc_provider" {
 # Modules ------------------------------------------------------------------------------------------
 module "addons" {
   source  = "aws-ia/eks-blueprints-addons/aws"
-  version = ">= 1.7"
+  version = ">= 1.8"
 
   cluster_name      = data.aws_eks_cluster.cluster.id
   cluster_endpoint  = data.aws_eks_cluster.cluster.endpoint
@@ -135,7 +135,7 @@ resource "helm_release" "appdynamics_cnao_collectors" {
   namespace        = "appdynamics"
   create_namespace = true
   chart            = "appdynamics-collectors"
-# version          = "1.13.658"
+# version          = "1.13.684"
   repository       = "https://appdynamics.jfrog.io/artifactory/appdynamics-cloud-helmcharts"
   wait             = true
   wait_for_jobs    = true
