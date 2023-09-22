@@ -7,7 +7,7 @@ solution for
 [Cloud Native Application Observability](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/about-cloud-native-application-observability) 
 using Helm charts via Terraform.  
 
-**NOTE:** This project is currently a work-in-progress. Updates are expected soon! (mid-August 2023).
+**NOTE:** This project is currently a work-in-progress. Updates are expected soon! (mid-October 2023).
 
 
 ## Deployment Tools
