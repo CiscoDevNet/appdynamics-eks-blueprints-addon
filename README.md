@@ -9,7 +9,21 @@ using Helm charts via Terraform.
 
 **NOTE:** This project is currently a work-in-progress. Updates are expected soon! (mid-October 2023).
 
+## Architecture Overview
+
+The [Kubernetes and App Service Monitoring](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/kubernetes-and-app-service-monitoring) 
+solution provides visibility into your Kubernetes infrastructure and services for Application Performance Monitoring (APM) via 
+AppDynamics-provided Helm charts. These Helm charts deploy the following components:
+
 ![Component Overview](./docs/static/images/appd-otel-flowchart-with-logs.png)
+
+## Get Started
+
+Before installing Kubernetes and App Service Monitoring solution, ensure that you meet the following requirements:
+
+-	Your account is set up on Cloud Native Application Observability. See [Account Administration](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/account-administration).
+-	You are connected to the cluster that you want to monitor.
+-	You have administrator privileges on the monitored cluster to run the Helm chart commands.
 
 ![Install Kubernetes and App Service Monitoring 1](./docs/static/images/cnao-observe-home.png)
 
@@ -18,6 +32,8 @@ using Helm charts via Terraform.
 ![Install Kubernetes and App Service Monitoring 3](./docs/static/images/cnao-generate-k8s-and-apm-collectors.png)
 
 ![Install Kubernetes and App Service Monitoring 4](./docs/static/images/cnao-download-k8s-and-apm-collectors.png)
+
+-	[Build Steps for Preparing the Workshop](docs/BUILD_STEPS_FOR_PREPARING_THE_WORKSHOP.md)
 
 ## Deployment Tools
 
