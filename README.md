@@ -9,6 +9,7 @@ using Helm charts via Terraform.
 
 **NOTE:** This project is currently a work-in-progress. Updates are expected soon! (mid-October 2023).
 
+![Install Kubernetes and App Service Monitoring](./docs/static/images/cnao-configure-k8s-and-apm.png)
 
 ## Deployment Tools
 
