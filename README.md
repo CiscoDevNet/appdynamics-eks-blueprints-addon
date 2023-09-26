@@ -11,6 +11,8 @@ using Helm charts via Terraform.
 
 ![Install Kubernetes and App Service Monitoring](./docs/static/images/cnao-configure-k8s-and-apm.png)
 
+![Install Kubernetes and App Service Monitoring 2](./docs/static/images/cnao-generate-k8s-and-apm-collectors-1462x830.png)
+
 ## Deployment Tools
 
 In order to deploy the AppDynamics Add-On for Amazon EKS Blueprints, you will first need to install the 
