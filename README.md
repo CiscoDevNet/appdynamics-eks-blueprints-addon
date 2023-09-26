@@ -9,6 +9,8 @@ using Helm charts via Terraform.
 
 **NOTE:** This project is currently a work-in-progress. Updates are expected soon! (mid-October 2023).
 
+![Component Overview](./docs/static/images/appd-otel-flowchart-with-logs.png)
+
 ![Install Kubernetes and App Service Monitoring 1](./docs/static/images/cnao-observe-home.png)
 
 ![Install Kubernetes and App Service Monitoring 2](./docs/static/images/cnao-configure-k8s-and-apm.png)
