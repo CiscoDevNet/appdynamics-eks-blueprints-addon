@@ -1,10 +1,8 @@
 # Manual Steps for Installing the AppDynamics Addon
-## Overview
-
 ## Deployment Tools
 
-In order to deploy the AppDynamics Add-On for Amazon EKS Blueprints, you will first need to install the 
-following set of command-line utilities:
+In order to manually deploy the AppDynamics Add-On for Amazon EKS Blueprints, you will first need to install 
+the following set of command-line utilities on either your local machine or a suitable VM:
 
 ### AWS Command Line Interface (v2)
 

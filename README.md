@@ -67,6 +67,6 @@ Before installing Kubernetes and App Service Monitoring solution, ensure that yo
 The AppDynamics Add-On for Amazon EKS Blueprints currently supports manual deployment to AWS EKS via Terraform. 
 In the future, we will be adding support for deployment via the AWS EKS console.  
 
-When you are ready, click on the link below for step-by-step instructions to manually deploy the AppDynamics Addon:
+Click on the link below for step-by-step instructions to manually deploy the AppDynamics Addon:
 
 -	[Manual Steps for Installing the AppDynamics Addon](docs/MANUAL_STEPS_FOR_INSTALLING_THE_APPDYNAMICS_ADDON.md)
