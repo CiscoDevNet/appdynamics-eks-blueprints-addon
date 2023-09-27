@@ -37,6 +37,23 @@ The AppDynamics-provided Helm charts deploy the following components:
 
 ![Component Overview](./docs/static/images/appd-otel-flowchart-with-logs.png)
 
+### Collectors
+
+| Collector                                 | Usage                                                            |
+|-------------------------------------------|------------------------------------------------------------------|
+| Cluster Collector                         | Collects Kubernetes data.
+| Infrastructure Collector                  | Collects server and container data, known as Host Monitoring.
+| Log Collector                             | Collects logs.
+| Cisco AppDynamics OpenTelemetry Collector | Receives OTLP data from the Infrastructure Collector, Cluster Collector, and Log Collector.
+
+### Operators
+
+| Operator                                  | Usage                                                            |
+|-------------------------------------------|------------------------------------------------------------------|
+| AppDynamics Operator                      | These two operators are responsible for the life-cycle management of `appdynamics-collectors` and allow you to inject and configure OpenTelemetry auto-instrumentation libraries.
+| OpenTelemetry Operator for Kubernetes     |
+| Orchestration Client                      | This operator is responsible for the life-cycle management of Kubernetes-releated agents.
+
 ## Get Started
 
 Before installing Kubernetes and App Service Monitoring solution, ensure that you meet the following requirements:
