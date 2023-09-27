@@ -7,9 +7,9 @@ solution for
 [Cloud Native Application Observability](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/about-cloud-native-application-observability) 
 using Helm charts via Terraform.  
 
-**NOTE:** This project is currently a work-in-progress. Production updates are expected soon! (mid-October 2023).
+**NOTE:** This project is currently in Beta and is a work-in-progress. Deployment-ready updates are expected soon! (mid-October 2023).
 
-## Overview
+## Introduction
 
 Cloud Native Application Observability is Cisco’s Software-as-a-Service (SaaS) product for observing, securing, and optimizing 
 large, managed Kubernetes deployments. It provides real-time observability across your entire technology stack: applications, 
@@ -31,21 +31,9 @@ Kubernetes and App Service Monitoring allows you to:
 -	Monitor the Kubernetes events and application logs within your cluster.
 -	Diagnose issues that may prevent uptime or obstruct scalability.
 
-## Get Started
-
-Before installing Kubernetes and App Service Monitoring solution, ensure that you meet the following requirements:
-
--	Your account is set up on Cloud Native Application Observability. See [Account Administration](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/account-administration).
--	You are connected to the cluster that you want to monitor.
--	You have administrator privileges on the monitored cluster to run the Helm chart commands.
-
--	[Manual Steps for Installing the AppDynamics Addon](docs/MANUAL_STEPS_FOR_INSTALLING_THE_APPDYNAMICS_ADDON.md)
-
 ## Architecture Overview
 
-The [Kubernetes and App Service Monitoring](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/kubernetes-and-app-service-monitoring) 
-solution provides visibility into your Kubernetes infrastructure and services for Application Performance Monitoring (APM) via 
-AppDynamics-provided Helm charts. These Helm charts deploy the following components:
+The AppDynamics-provided Helm charts deploy the following components:
 
 ![Component Overview](./docs/static/images/appd-otel-flowchart-with-logs.png)
 
@@ -57,3 +45,4 @@ Before installing Kubernetes and App Service Monitoring solution, ensure that yo
 -	You are connected to the cluster that you want to monitor.
 -	You have administrator privileges on the monitored cluster to run the Helm chart commands.
 
+-	[Manual Steps for Installing the AppDynamics Addon](docs/MANUAL_STEPS_FOR_INSTALLING_THE_APPDYNAMICS_ADDON.md)
