@@ -7,6 +7,13 @@ solution for
 [Cloud Native Application Observability](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/about-cloud-native-application-observability) 
 using Helm charts via Terraform.  
 
+Cloud Native Application Observability is Cisco’s software-as-a-service (SaaS) product for observing, securing, and optimizing 
+large, managed Kubernetes deployments. It provides real-time observability across your entire technology stack: applications, 
+software-defined compute, storage, services, network, and other infrastructure, through the collection and correlation of metrics, 
+events, logs, and traces (MELT).  
+
+This illustration shows a high-level overview of how Cloud Native Application Observability works:
+
 ![CNAO Overview](./docs/static/images/cnao-overview.png)
 
 **NOTE:** This project is currently a work-in-progress. Updates are expected soon! (mid-October 2023).
