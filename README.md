@@ -50,9 +50,9 @@ The AppDynamics-provided Helm charts deploy the following components:
 
 | Operator                                  | Usage                                                            |
 |-------------------------------------------|------------------------------------------------------------------|
-| AppDynamics Operator                      | These two operators are responsible for the life-cycle management of `appdynamics-collectors` and allow you to inject and configure OpenTelemetry auto-instrumentation libraries.
+| AppDynamics Operator                      | These two operators are responsible for the life-cycle management of `appdynamics-collectors` and allow you to inject and configure OpenTelemetry auto-instrumentation libraries. Currently, Java, NodeJS, and Python are supported for auto-injection.
 | OpenTelemetry Operator for Kubernetes     |
-| Orchestration Client                      | This operator is responsible for the life-cycle management of Kubernetes-releated agents.
+| Orchestration Client                      | This operator is responsible for the life-cycle management of Kubernetes-related agents.
 
 ## Get Started
 
