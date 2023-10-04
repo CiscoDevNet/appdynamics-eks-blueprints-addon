@@ -25,6 +25,11 @@ output "aws_eks_cluster_name" {
   value       = var.aws_eks_cluster_name
 }
 
+output "aws_eks_cluster_oidc_provider" {
+  description = "URL for OpenID Connect Provider."
+  value       = data.aws_iam_openid_connect_provider.oidc_provider.url
+}
+
 output "aws_eks_configure_kubectl" {
   description = "Configure kubectl: Using the correct AWS profile, run the following command to update your kubeconfig:"
   value       = "aws eks --region ${var.aws_region} update-kubeconfig --name ${data.aws_eks_cluster.cluster.id}"
