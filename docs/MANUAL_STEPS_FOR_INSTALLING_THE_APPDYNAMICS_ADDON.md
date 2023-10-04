@@ -55,11 +55,26 @@ EKS cluster control plane. For example, a 1.26 `kubectl` client works with Kuber
 ### yq
 
 [yq](https://github.com/mikefarah/yq) is a lightweight and portable command-line YAML processor. `yq` uses 
-[jq](https://github.com/stedolan/jq)-like syntax but works with YAML files as well as JSON, XML, 
+[jq](https://jqlang.github.io/jq/)-like syntax but works with YAML files as well as JSON, XML, 
 properties, CSV and TSV. It doesn't yet support everything `jq` does-but it does support the most common 
 operations and functions, and more are being added continuously.  
 
 The [yq binaries](https://github.com/mikefarah/yq/releases/latest/) can be downloaded from GitHub.
+
+## Get the Code
+
+1.	Create a folder for your AppDynamics Add-On for Amazon EKS Blueprints project or use your home directory:
+
+    ```bash
+    cd
+    ```
+
+2.	Get the code from the Cisco DevNet repository on GitHub:
+
+    ```bash
+    git clone https://github.com/CiscoDevNet/appdynamics-eks-blueprints-addon.git
+    cd appdynamics-eks-blueprints-addon
+    ```
 
 ## Overview
 
@@ -132,15 +147,16 @@ specific instructions for installing the required software are left as an exerci
 
 For macOS environments, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 4.1.13
+-	Homebrew 4.1.14
 -	Git 2.42.0
 -	Packer 1.9.4
--	Terraform 1.5.7
+-	Terraform 1.6.0
 -	jq 1.7
+-	yq 4.35.2
 
 Perform the following steps to install the needed software:
 
-1.	Install the [Homebrew 4.1.13](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+1.	Install the [Homebrew 4.1.14](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     ```bash
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     ```
@@ -156,7 +172,7 @@ Perform the following steps to install the needed software:
     brew install hashicorp/tap/packer
     ```
 
-4.	Install [Terraform 1.5.7](https://www.terraform.io/downloads.html) for macOS 64-bit.  
+4.	Install [Terraform 1.6.0](https://www.terraform.io/downloads.html) for macOS 64-bit.  
     ```bash
     brew tap hashicorp/tap
     brew install hashicorp/tap/terraform
@@ -165,13 +181,16 @@ Perform the following steps to install the needed software:
 5.	Install [jq 1.7](https://jqlang.github.io/jq/) for macOS 64-bit.  
     `brew install jq`  
 
+6.	Install [yq 4.35.2](https://github.com/mikefarah/yq/) for macOS 64-bit.  
+    `brew install yq`  
+
 ### Configuration and Validation - macOS
 
 1.	Validate installed command-line tools:
 
     ```bash
     brew --version
-    # Homebrew 4.1.13
+    # Homebrew 4.1.14
 
     brew doctor
     # Your system is ready to brew.
@@ -183,10 +202,13 @@ Perform the following steps to install the needed software:
     # 1.9.4
 
     terraform --version
-    # Terraform v1.5.7
+    # Terraform v1.6.0
 
     jq --version
     # jq-1.7
+
+    yq --version
+    # yq (https://github.com/mikefarah/yq/) version v4.35.2
     ```
 
 2.	Configure Git for local user:
@@ -215,8 +237,9 @@ Here is a list of the recommended open source software to be installed on the ho
 -	Wget 1.21.1 (Ubuntu 64-bit only)
 -	Git 2.42.0
 -	Packer 1.9.4
--	Terraform 1.5.7
+-	Terraform 1.6.0
 -	jq 1.7
+-	yq 4.35.2
 
 ### Git Bash installation - Windows 64-Bit
 
@@ -228,13 +251,17 @@ Perform the following steps to install the needed software:
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\bin`  
 
-3.	Install [Terraform 1.5.7](https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_windows_amd64.zip) for Windows 64-bit.  
+3.	Install [Terraform 1.6.0](https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_windows_amd64.zip) for Windows 64-bit.  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\bin`  
 
 4.	Install [jq 1.7](https://github.com/jqlang/jq/releases/download/jq-1.7/jq-win64.exe) for Windows 64-bit.  
     Create suggested install folder and rename binary to:  
     `C:\Program Files\Git\usr\local\bin\jq.exe`
+
+5.	Install [yq 4.35.2](https://github.com/mikefarah/yq/releases/download/v4.35.2/yq_windows_amd64.exe) for Windows 64-bit.  
+    Create suggested install folder and rename binary to:  
+    `C:\Program Files\Git\usr\local\bin\yq.exe`
 
 ### Configuration and Validation - Windows 64-Bit
 
@@ -259,10 +286,13 @@ Perform the following steps to install the needed software:
     # 1.9.4
 
     terraform --version
-    # Terraform v1.5.7
+    # Terraform v1.6.0
 
     jq --version
     # jq-1.7
+
+    yq --version
+    # yq (https://github.com/mikefarah/yq/) version v4.35.2
     ```
 
 5.	Configure Git for local user:
@@ -298,18 +328,24 @@ Perform the following steps to install the needed software:
     sudo rm -i packer_1.9.4_linux_amd64.zip
     ```
 
-5.	Install [Terraform 1.5.7](https://www.terraform.io/downloads.html) for Ubuntu 64-bit.  
+5.	Install [Terraform 1.6.0](https://www.terraform.io/downloads.html) for Ubuntu 64-bit.  
     ```bash
     cd /usr/local/bin
-    sudo wget https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip
-    sudo unzip terraform_1.5.7_linux_amd64.zip
-    sudo rm -i terraform_1.5.7_linux_amd64.zip
+    sudo wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip
+    sudo unzip terraform_1.6.0_linux_amd64.zip
+    sudo rm -i terraform_1.6.0_linux_amd64.zip
     ```
 
-6.	Install [jq 1.7](https://jqlang.github.io/jq/) for macOS 64-bit.  
+6.	Install [jq 1.7](https://jqlang.github.io/jq/) for Ubuntu 64-bit.  
     ```bash
     sudo apt install jq
     ```
+
+7.	Install [yq 4.35.2](https://github.com/mikefarah/yq/) for Ubuntu 64-bit.  
+    ```bash
+    sudo apt install yq
+    ```
+
 
 ### Configuration and Validation - Ubuntu 64-Bit
 
@@ -323,10 +359,13 @@ Perform the following steps to install the needed software:
     # 1.9.4
 
     terraform --version
-    # Terraform v1.5.7
+    # Terraform v1.6.0
 
     jq --version
     # jq-1.7
+
+    yq --version
+    # yq (https://github.com/mikefarah/yq/) version v4.35.2
     ```
 
 2.	Configure Git for local user:
