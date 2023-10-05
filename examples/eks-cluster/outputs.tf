@@ -40,6 +40,11 @@ output "aws_eks_instance_type" {
   value       = var.aws_eks_instance_type
 }
 
+output "aws_eks_instance_disk_size" {
+  description = "Disk size for AWS EKS Node instances."
+  value       = var.aws_eks_instance_disk_size
+}
+
 output "aws_eks_cluster_endpoint" {
   description = "Endpoint for EKS control plane."
   value       = module.eks.cluster_endpoint

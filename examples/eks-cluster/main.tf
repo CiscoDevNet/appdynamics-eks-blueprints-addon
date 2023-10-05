@@ -147,7 +147,7 @@ module "eks" {
 
       # use default launch template to adjust disk size and allow remote access to worker nodes.
       use_custom_launch_template = false
-      disk_size                  = 80
+      disk_size                  = var.aws_eks_instance_disk_size
 
       remote_access = {
         ec2_ssh_key               = var.ssh_pub_key_name

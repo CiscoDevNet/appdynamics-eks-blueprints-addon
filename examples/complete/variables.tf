@@ -62,7 +62,7 @@ variable "aws_eks_endpoint_public_access_cidrs" {
 variable "aws_eks_desired_node_count" {
   description = "Desired number of EKS worker nodes."
   type        = number
-  default     = 2
+  default     = 3
 }
 
 variable "aws_eks_min_node_count" {
@@ -80,7 +80,13 @@ variable "aws_eks_max_node_count" {
 variable "aws_eks_instance_type" {
   description = "AWS EKS Node Group instance type."
   type        = list(string)
-  default     = ["t2.large"]
+  default     = ["t3.large"]
+}
+
+variable "aws_eks_instance_disk_size" {
+  description = "Disk size for AWS EKS Node instances."
+  type        = list(string)
+  default     = 160
 }
 
 # valid aws eks versions are: 1.24, 1.25, 1.26, 1.27, and 1.28.

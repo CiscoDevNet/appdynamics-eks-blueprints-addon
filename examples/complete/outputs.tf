@@ -40,9 +40,19 @@ output "aws_eks_instance_type" {
   value       = var.aws_eks_instance_type
 }
 
+output "aws_eks_instance_disk_size" {
+  description = "Disk size for AWS EKS Node instances."
+  value       = var.aws_eks_instance_disk_size
+}
+
 output "aws_eks_cluster_endpoint" {
   description = "Endpoint for EKS control plane."
   value       = module.eks.cluster_endpoint
+}
+
+output "aws_eks_cluster_oidc_provider" {
+  description = "URL for OpenID Connect Provider."
+  value       = module.eks.oidc_provider
 }
 
 output "aws_eks_configure_kubectl" {

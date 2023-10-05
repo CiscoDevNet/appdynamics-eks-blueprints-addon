@@ -83,6 +83,12 @@ variable "aws_eks_instance_type" {
   default     = ["t3.large"]
 }
 
+variable "aws_eks_instance_disk_size" {
+  description = "Disk size for AWS EKS Node instances."
+  type        = list(string)
+  default     = 160
+}
+
 # valid aws eks versions are: 1.24, 1.25, 1.26, 1.27, and 1.28.
 variable "aws_eks_kubernetes_version" {
   description = "Kubernetes version to use for the EKS cluster."
