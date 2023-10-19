@@ -85,7 +85,7 @@ variable "aws_eks_instance_type" {
 
 variable "aws_eks_instance_disk_size" {
   description = "Disk size for AWS EKS Node instances."
-  type        = list(string)
+  type        = number
   default     = 80
 }
 
@@ -93,7 +93,7 @@ variable "aws_eks_instance_disk_size" {
 variable "aws_eks_kubernetes_version" {
   description = "Kubernetes version to use for the EKS cluster."
   type        = string
-  default     = "1.27"
+  default     = "1.28"
 }
 
 variable "ssh_pub_key_name" {
