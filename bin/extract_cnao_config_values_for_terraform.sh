@@ -25,6 +25,16 @@
 # NOTE: Script can be run without elevated user privileges.
 #---------------------------------------------------------------------------------------------------
 
+# set empty default values for environment variables if not set. -----------------------------------
+AWS_EKS_CLUSTER="${AWS_EKS_CLUSTER:-}"
+
+# validate environment variables. ------------------------------------------------------------------
+if [ -z "$AWS_EKS_CLUSTER" ]; then
+  echo "Error: 'AWS_EKS_CLUSTER' environment variable not set."
+  echo "Please set the 'AWS_EKS_CLUSTER' environment variable to the name of your AWS EKS Cluster."
+  exit 1
+fi
+
 # validate helm charts have been generated and downloaded. -----------------------------------------
 # check if 'operators-values.yaml' file exists.
 if [ ! -f "operators-values.yaml" ]; then
@@ -73,6 +83,13 @@ echo "Begin processing Helm Chart files..."
 rm -f terraform.tfvars
 cp -p terraform.tfvars.example terraform.tfvars
 
+# retrieve aws eks cluster name for use with terraform. --------------------------------------------
+# extract eks cluster name from environment variable.
+aws_eks_cluster_name="${AWS_EKS_CLUSTER}"
+
+# escape forward slashes '/' in eks cluster name before substitution.
+aws_eks_cluster_name_escaped=$(echo ${aws_eks_cluster_name} | sed 's/\//\\\//g')
+
 # extract cnao configuration values for use with terraform. ----------------------------------------
 # extract helm chart values from 'operators-values' and 'collectors-values.yaml'.
 echo "Extracting CNAO configuration values..."
@@ -92,6 +109,10 @@ collector_endpoint_escaped=$(echo ${collector_endpoint} | sed 's/\//\\\//g')
 operators_endpoint_escaped=$(echo ${operators_endpoint} | sed 's/\//\\\//g')
 tenant_id_escaped=$(echo ${tenant_id} | sed 's/\//\\\//g')
 token_url_escaped=$(echo ${token_url} | sed 's/\//\\\//g')
+
+# substitute the eks cluster name variable. --------------------------------------------------------
+echo "Substituting EKS Cluster name variable..."
+sed -i.bak -e "/^#aws_eks_cluster_name =/s/^.*$/aws_eks_cluster_name = \"${aws_eks_cluster_name_escaped}\"/" terraform.tfvars
 
 # substitute the helm chart variables. -------------------------------------------------------------
 echo "Substituting Helm Chart variables..."
