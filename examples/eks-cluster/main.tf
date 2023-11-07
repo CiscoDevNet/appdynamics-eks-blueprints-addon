@@ -111,7 +111,7 @@ module "vpc" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = ">= 19.17.2"
+  version = ">= 19.19.0"
 
   cluster_name    = local.cluster_name
   cluster_version = var.aws_eks_kubernetes_version

@@ -97,8 +97,8 @@ client_id=$(yq '.appdynamics-otel-collector.clientId' collectors-values.yaml)
 client_secret=$(yq '.appdynamics-otel-collector.clientSecret' collectors-values.yaml)
 cluster_name=$(yq '.global.clusterName' collectors-values.yaml)
 collector_endpoint=$(yq '.appdynamics-otel-collector.endpoint' collectors-values.yaml)
-operators_endpoint=$(yq '.fso-agent-mgmt-client.solution.endpoint' operators-values.yaml)
-tenant_id=$(yq '.fso-agent-mgmt-client.oauth.tenantId' operators-values.yaml)
+operators_endpoint=$(yq '.appdynamics-smartagent.solution.endpoint' operators-values.yaml)
+tenant_id=$(yq '.appdynamics-smartagent.oauth.tenantId' operators-values.yaml)
 token_url=$(yq '.appdynamics-otel-collector.tokenUrl' collectors-values.yaml)
 
 # escape forward slashes '/' in chart values before substitution.

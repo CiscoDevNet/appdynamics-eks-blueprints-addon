@@ -27,6 +27,5 @@
 #cnao_cluster_name = "<your_cnao_cluster_name_here>"
 #cnao_collector_endpoint = "<your_cnao_collector_endpoint_here>"
 #cnao_operators_endpoint = "<your_cnao_operators_endpoint_here>"
-#cnao_install_log_collector = "false"
 #cnao_tenant_id = "<your_cnao_tenant_id_here>"
 #cnao_token_url = "<your_cnao_token_url_here>"

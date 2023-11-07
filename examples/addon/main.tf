@@ -75,7 +75,7 @@ data "aws_iam_openid_connect_provider" "oidc_provider" {
 # Modules ------------------------------------------------------------------------------------------
 module "addons" {
   source  = "aws-ia/eks-blueprints-addons/aws"
-  version = ">= 1.9"
+  version = ">= 1.11"
 
   cluster_name      = data.aws_eks_cluster.cluster.id
   cluster_endpoint  = data.aws_eks_cluster.cluster.endpoint
@@ -101,7 +101,7 @@ module "addons" {
       namespace        = "appdynamics"
       create_namespace = true
       chart            = "appdynamics-operators"
-#     chart_version    = "1.15.174"
+#     chart_version    = "1.16.201"
       repository       = "https://appdynamics.jfrog.io/artifactory/appdynamics-cloud-helmcharts"
       wait             = true
       wait_for_jobs    = true
@@ -135,7 +135,7 @@ resource "helm_release" "appdynamics_cnao_collectors" {
   namespace        = "appdynamics"
   create_namespace = true
   chart            = "appdynamics-collectors"
-# version          = "1.14.714"
+# version          = "1.16.765"
   repository       = "https://appdynamics.jfrog.io/artifactory/appdynamics-cloud-helmcharts"
   wait             = true
   wait_for_jobs    = true
@@ -146,7 +146,6 @@ resource "helm_release" "appdynamics_cnao_collectors" {
       client_secret         = var.cnao_client_secret
       cluster_name          = var.cnao_cluster_name
       collector_endpoint    = var.cnao_collector_endpoint
-      install_log_collector = var.cnao_install_log_collector
       token_url             = var.cnao_token_url
     })
   ]

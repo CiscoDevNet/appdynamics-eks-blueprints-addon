@@ -65,12 +65,6 @@ variable "cnao_operators_endpoint" {
   type        = string
 }
 
-variable "cnao_install_log_collector" {
-  description = "Set this option to 'true' to install log collector monitoring (default is 'true')."
-  type        = string
-  default     = "true"
-}
-
 variable "cnao_tenant_id" {
   description = "Tenant ID for the AppDynamics Cloud Native Application Observability tenant."
   type        = string
