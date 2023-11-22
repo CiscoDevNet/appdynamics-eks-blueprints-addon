@@ -81,7 +81,7 @@ data "aws_eks_cluster_auth" "this" {
 # Modules ------------------------------------------------------------------------------------------
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = ">= 5.1"
+  version = ">= 5.2"
 
   name = local.vpc_name
   cidr = var.aws_vpc_cidr_block
@@ -111,7 +111,7 @@ module "vpc" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = ">= 19.19.0"
+  version = ">= 19.20.0"
 
   cluster_name    = local.cluster_name
   cluster_version = var.aws_eks_kubernetes_version
@@ -161,7 +161,7 @@ module "eks" {
 
 module "addons" {
   source  = "aws-ia/eks-blueprints-addons/aws"
-  version = ">= 1.11"
+  version = ">= 1.12"
 
   cluster_name      = data.aws_eks_cluster.cluster.id
   cluster_endpoint  = data.aws_eks_cluster.cluster.endpoint
