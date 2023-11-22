@@ -1,8 +1,9 @@
-# Manual Steps for Installing the AppDynamics Addon
+# Manual Steps for Installing the Cisco Cloud Observability Addon
 ## Deployment Tools
 
-In order to manually deploy the AppDynamics Add-On for Amazon EKS Blueprints, you will first need to install 
-the following set of command-line utilities on either your local machine or a suitable VM:
+In order to manually deploy the Cisco Cloud Observability Add-On for Amazon EKS Blueprints, you will 
+first need to install the following set of command-line utilities on either your local machine or a 
+suitable VM:
 
 ### AWS Command Line Interface (v2)
 
@@ -25,7 +26,7 @@ in-house solutions. The infrastructure Terraform can manage includes low-level c
 instances, storage, and networking, as well as high-level components such as DNS entries, SaaS features, 
 etc.  
 
-Terraform is used to automate the deployment of the AppDynamics Add-On for Amazon EKS Blueprints.  
+Terraform is used to automate the deployment of the Cisco Cloud Observability Add-On for Amazon EKS Blueprints.  
 Installation guides for your platform can be found 
 [here](https://developer.hashicorp.com/terraform/downloads).
 
@@ -63,7 +64,7 @@ The [yq binaries](https://github.com/mikefarah/yq/releases/latest/) can be downl
 
 ## Get the Code
 
-1.	Create a folder for your AppDynamics Add-On for Amazon EKS Blueprints project or use your home directory:
+1.	Create a folder for your Cisco Cloud Observability Add-On for Amazon EKS Blueprints project or use your home directory:
 
     ```bash
     cd
@@ -78,13 +79,13 @@ The [yq binaries](https://github.com/mikefarah/yq/releases/latest/) can be downl
 
 ## Overview
 
-![Install Kubernetes and App Service Monitoring 1](./static/images/cnao-observe-home.png)
+![Install Kubernetes and App Service Monitoring 1](./static/images/cco-observe-home.png)
 
-![Install Kubernetes and App Service Monitoring 2](./static/images/cnao-configure-k8s-and-apm.png)
+![Install Kubernetes and App Service Monitoring 2](./static/images/cco-configure-k8s-and-apm.png)
 
-![Install Kubernetes and App Service Monitoring 3](./static/images/cnao-generate-k8s-and-apm-collectors.png)
+![Install Kubernetes and App Service Monitoring 3](./static/images/cco-generate-k8s-and-apm-collectors.png)
 
-![Install Kubernetes and App Service Monitoring 4](./static/images/cnao-download-k8s-and-apm-collectors.png)
+![Install Kubernetes and App Service Monitoring 4](./static/images/cco-download-k8s-and-apm-collectors.png)
 
 ## Build and Deployment Tools
 
@@ -109,7 +110,7 @@ VM consists of the following type:
 
 -	__LPAD VM__: A 'Launchpad' Lab VM with pre-configured tooling for Kubernetes and AWS CLI Operations.
 
-For SE-lead workshops, the Lab VM image is built and maintained by Cisco/AppDynamics. However, all of the 
+For SE-lead workshops, the Lab VM image is built and maintained by Cisco AppDynamics. However, all of the 
 artifacts used to build the image are present in this project, so customers are free to customize and 
 build their own VM images if desired.  
 
@@ -132,8 +133,8 @@ and organizations to use Terraform in production.
 
 ## Get Started
 
-To configure the FSO Lab workshop environments, the first step is to set-up your development environment 
-by installing the needed software.
+To configure the Cisco Observability Platform Lab workshop environments, the first step is to set-up your 
+development environment by installing the needed software.
 
 ### Prerequisites
 
@@ -378,7 +379,7 @@ Perform the following steps to install the needed software:
 
 ## Get the Code
 
-1.	Create a folder for your FSO Lab DevOps project or use your home directory:
+1.	Create a folder for your Cisco Observability Platform Lab DevOps project or use your home directory:
 
     ```bash
     cd ~
@@ -393,7 +394,7 @@ Perform the following steps to install the needed software:
 
 ## Build the VM Image and Deploy the Lab Infrastructure
 
-The FSO Lab DevOps project currently supports a VM image build for Amazon AWS. Click on the link below 
-for platform-specific instructions and a Bill-of-Materials:
+The Cisco Observability Platform Lab DevOps project currently supports a VM image build for Amazon AWS. 
+Click on the link below for platform-specific instructions and a Bill-of-Materials:
 
 -	[AWS Build and Deploy](AWS_VM_BUILD_INSTRUCTIONS.md): Instructions

@@ -16,7 +16,7 @@ tags
 /examples/**/*.tfplan
 /examples/**/terraform.tfvars
 
-# ignore appdynamics operators and collectors helm charts.
+# ignore cisco cloud observability operators and collectors helm charts.
 /examples/**/collectors-values.yaml
 /examples/**/operators-values.yaml
 

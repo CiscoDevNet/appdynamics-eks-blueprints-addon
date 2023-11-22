@@ -1,24 +1,24 @@
-# AppDynamics Add-On for Amazon EKS Blueprints
+# Cisco Cloud Observability Add-On for Amazon EKS Blueprints
 
-The AppDynamics Add-On for [Amazon EKS Blueprints](https://github.com/aws-ia/terraform-aws-eks-blueprints) 
-enables platform administrators to install the AppDynamics 
+The Cisco Cloud Observability Add-On for [Amazon EKS Blueprints](https://github.com/aws-ia/terraform-aws-eks-blueprints) 
+enables platform administrators to install the 
 [Kubernetes and App Service Monitoring](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/kubernetes-and-app-service-monitoring) 
 solution for 
-[Cloud Native Application Observability](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/about-cloud-native-application-observability) 
+[Cisco Cloud Observability](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/about-cloud-native-application-observability) 
 using Helm charts via Terraform.  
 
 **NOTE:** This project is currently in Beta and is a work-in-progress. Deployment-ready updates are expected soon! (mid-October 2023).
 
 ## Introduction
 
-Cloud Native Application Observability is Cisco’s Software-as-a-Service (SaaS) product for observing, securing, and optimizing 
+Cisco Cloud Observability is Cisco’s Software-as-a-Service (SaaS) product for observing, securing, and optimizing 
 large, managed Kubernetes deployments. It provides real-time observability across your entire technology stack: applications, 
 software-defined compute, storage, services, network, and other infrastructure, through the collection and correlation of metrics, 
 events, logs, and traces (MELT).  
 
-This illustration shows a high-level overview of how Cloud Native Application Observability works:
+This illustration shows a high-level overview of how Cisco Cloud Observability works:
 
-![CNAO Overview](./docs/static/images/cnao-overview.png)
+![Cisco Cloud Observability Overview](./docs/static/images/cco-overview.png)
 
 The Kubernetes and App Service Monitoring solution provides visibility into your Kubernetes infrastructure and services for 
 Application Performance Monitoring (APM).  
@@ -33,9 +33,9 @@ Kubernetes and App Service Monitoring allows you to:
 
 ## Architecture Overview
 
-The AppDynamics-provided Helm charts deploy the following components:
+The Cisco AppDynamics-provided Helm charts deploy the following components:
 
-![Component Overview](./docs/static/images/appd-otel-flowchart-with-logs.png)
+![Component Overview](./docs/static/images/cco-otel-flowchart-with-logs.png)
 
 ### Collectors
 
@@ -58,15 +58,15 @@ The AppDynamics-provided Helm charts deploy the following components:
 
 Before installing Kubernetes and App Service Monitoring solution, ensure that you meet the following requirements:
 
--	Your account is set up on Cloud Native Application Observability. See [Account Administration](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/account-administration).
+-	Your account is set up on Cisco Cloud Observability. See [Account Administration](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/account-administration).
 -	You are connected to the cluster that you want to monitor.
 -	You have administrator privileges on the monitored cluster to run the Helm chart commands.
 
-## Deploy the AppDynamics Addon
+## Deploy the Cisco Cloud Observability Addon
 
-The AppDynamics Add-On for Amazon EKS Blueprints currently supports manual deployment to AWS EKS via Terraform. 
+The Cisco Cloud Observability Add-On for Amazon EKS Blueprints currently supports manual deployment to AWS EKS via Terraform. 
 In the future, we will be adding support for deployment via the AWS EKS console.  
 
-Click on the link below for step-by-step instructions to manually deploy the AppDynamics Addon:
+Click on the link below for step-by-step instructions to manually deploy the Cisco Cloud Observability Addon:
 
--	[Manual Steps for Installing the AppDynamics Addon](docs/MANUAL_STEPS_FOR_INSTALLING_THE_APPDYNAMICS_ADDON.md)
+-	[Manual Steps for Installing the Cisco Cloud Observability Addon](docs/MANUAL_STEPS_FOR_INSTALLING_THE_APPDYNAMICS_ADDON.md)
