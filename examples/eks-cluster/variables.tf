@@ -104,17 +104,17 @@ variable "ssh_pub_key_name" {
 variable "resource_name_prefix" {
   description = "Resource name prefix."
   type        = string
-  default     = "AppD-EKS-Addon"
+  default     = "CCO-EKS-Addon"
 }
 
 variable "resource_environment_home_tag" {
   description = "Resource environment home tag."
   type        = string
-  default     = "AppDynamics EKS Blueprints Addon - EKS Cluster"
+  default     = "Cisco Cloud Observability EKS Blueprints Addon - EKS Cluster"
 }
 
 variable "resource_project_tag" {
   description = "Resource project tag."
   type        = string
-  default     = "AppDynamics EKS Blueprints Addon"
+  default     = "Cisco Cloud Observability EKS Blueprints Addon"
 }

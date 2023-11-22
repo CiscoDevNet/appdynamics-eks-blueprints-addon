@@ -29,49 +29,49 @@ variable "aws_eks_cluster_name" {
 variable "resource_environment_home_tag" {
   description = "Resource environment home tag."
   type        = string
-  default     = "AppDynamics EKS Blueprints Addon - Addon"
+  default     = "Cisco Cloud Observability EKS Blueprints Addon - Addon"
 }
 
 variable "resource_project_tag" {
   description = "Resource project tag."
   type        = string
-  default     = "AppDynamics EKS Blueprints Addon"
+  default     = "Cisco Cloud Observability EKS Blueprints Addon"
 }
 
-variable "cnao_client_id" {
-  description = "Defines the client ID for authenticating with Cloud Native Application Observability."
+variable "cco_client_id" {
+  description = "Defines the client ID for authenticating with Cisco Cloud Observability."
   type        = string
   sensitive   = true
 }
 
-variable "cnao_client_secret" {
-  description = "Defines the secret string in plaintext for authenticating with Cloud Native Application Observability."
+variable "cco_client_secret" {
+  description = "Defines the secret string in plaintext for authenticating with Cisco Cloud Observability."
   type        = string
   sensitive   = true
 }
 
-variable "cnao_cluster_name" {
+variable "cco_cluster_name" {
   description = "The name of the cluster that is displayed in the UI."
   type        = string
 }
 
-variable "cnao_collector_endpoint" {
+variable "cco_collector_endpoint" {
   description = "Defines the endpoint the collector uses to send data for the Appdynamics Collectors."
   type        = string
 }
 
-variable "cnao_operators_endpoint" {
+variable "cco_operators_endpoint" {
   description = "Defines the endpoint the collector uses to send data for the Appdynamics Operators."
   type        = string
 }
 
-variable "cnao_tenant_id" {
-  description = "Tenant ID for the AppDynamics Cloud Native Application Observability tenant."
+variable "cco_tenant_id" {
+  description = "Tenant ID for the Cisco Cloud Observability tenant."
   type        = string
 }
 
-variable "cnao_token_url" {
-  description = "Authentication token for the AppDynamics Cloud Native Application Observability tenant."
+variable "cco_token_url" {
+  description = "Authentication token for the Cisco Cloud Observability tenant."
   type        = string
   sensitive   = true
 }

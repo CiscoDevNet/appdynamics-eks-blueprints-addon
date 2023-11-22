@@ -179,11 +179,11 @@ module "addons" {
   enable_metrics_server = false
   enable_cert_manager   = true
 
-  # appdynamics helm charts for cnao kubernetes and app service monitoring.
+  # cisco cloud observability helm charts for kubernetes and app service monitoring.
   helm_releases = {
-    # install appdynamics operators.
-    appdynamics-cnao-operators = {
-      description      = "A Helm chart for the AppDynamics Operators."
+    # install cisco cloud observability operators.
+    cisco-cloud-observability-operators = {
+      description      = "A Helm chart for the Cisco Cloud Observability Operators."
       namespace        = "appdynamics"
       create_namespace = true
       chart            = "appdynamics-operators"
@@ -194,12 +194,12 @@ module "addons" {
 
       values = [
         templatefile("${path.module}/templates/operators-values.yaml.tmpl", {
-          client_id          = var.cnao_client_id
-          client_secret      = var.cnao_client_secret
-          cluster_name       = var.cnao_cluster_name
-          operators_endpoint = var.cnao_operators_endpoint
-          tenant_id          = var.cnao_tenant_id
-          token_url          = var.cnao_token_url
+          client_id          = var.cco_client_id
+          client_secret      = var.cco_client_secret
+          cluster_name       = var.cco_cluster_name
+          operators_endpoint = var.cco_operators_endpoint
+          tenant_id          = var.cco_tenant_id
+          token_url          = var.cco_token_url
         })
       ]
 
@@ -219,10 +219,10 @@ resource "random_string" "suffix" {
   special = false
 }
 
-# install appdynamics collectors.
-resource "helm_release" "appdynamics_cnao_collectors" {
-  name             = "appdynamics-cnao-collectors"
-  description      = "A Helm chart for the AppDynamics Collectors."
+# install cisco cloud observability collectors.
+resource "helm_release" "cisco_cloud_observability_collectors" {
+  name             = "cisco-cloud-observability-collectors"
+  description      = "A Helm chart for the Cisco Cloud Observability Collectors."
   namespace        = "appdynamics"
   create_namespace = true
   chart            = "appdynamics-collectors"
@@ -233,11 +233,11 @@ resource "helm_release" "appdynamics_cnao_collectors" {
 
   values = [
     templatefile("${path.module}/templates/collectors-values.yaml.tmpl", {
-      client_id             = var.cnao_client_id
-      client_secret         = var.cnao_client_secret
-      cluster_name          = var.cnao_cluster_name
-      collector_endpoint    = var.cnao_collector_endpoint
-      token_url             = var.cnao_token_url
+      client_id             = var.cco_client_id
+      client_secret         = var.cco_client_secret
+      cluster_name          = var.cco_cluster_name
+      collector_endpoint    = var.cco_collector_endpoint
+      token_url             = var.cco_token_url
     })
   ]
 
@@ -246,7 +246,7 @@ resource "helm_release" "appdynamics_cnao_collectors" {
 #   "${file("collectors-values.yaml")}"
 # ]
 
-  # note: the appdynamics collectors deployment depends on the the appdynamics operators.
+  # note: the cisco cloud observability collectors deployment depends on the the cisco cloud observability operators.
   # wait for eks blueprints addons to be installed first.
   depends_on = [
     module.addons

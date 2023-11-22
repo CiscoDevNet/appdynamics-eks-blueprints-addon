@@ -1,19 +1,18 @@
 #!/bin/bash -eu
 #---------------------------------------------------------------------------------------------------
-# Extract CNAO configuration values for use with Terraform.
+# Extract Cisco Cloud Observability configuration values for use with Terraform.
 #
-# The AppDynamics Kubernetes and App Service Monitoring with Cloud Native Application Observability
-# (CNAO) provides a solution to monitor applications and infrastructure with correlation using Helm
-# Charts.
+# The Kubernetes and App Service Monitoring with Cisco Cloud Observability provides a
+# solution to monitor applications and infrastructure with correlation using Helm Charts.
 #
 # To simplify deployment of these Helm Charts, this script will extract key values from the
 # downloaded 'operators-values.yaml' and 'collectors-values.yaml' for ease of deployment with the
-# AppDynamics EKS Blueprints Addon via Terraform.
+# Cisco Cloud Observability EKS Blueprints Addon via Terraform.
 #
 # To execute this script, you will need the following:
-#   'operators-values.yaml' file:      Download to your local Terraform directory from CNAO.
-#   'collectors-values.yaml' file:     Download to your local Terraform directory from CNAO.
-#   'terraform.tfvars.example' file:   Used to load Terraform variable definitions for CNAO.
+#   'operators-values.yaml' file:      Download to your local Terraform directory from Cisco Cloud Observability.
+#   'collectors-values.yaml' file:     Download to your local Terraform directory from Cisco Cloud Observability.
+#   'terraform.tfvars.example' file:   Used to load Terraform variable definitions for Cisco Cloud Observability.
 #   yq:                                'yq' is a command-line YAML processor for linux 64-bit.
 #
 # For more details, please visit:
@@ -39,7 +38,7 @@ fi
 # check if 'operators-values.yaml' file exists.
 if [ ! -f "operators-values.yaml" ]; then
   echo "ERROR: 'operators-values.yaml' file NOT found."
-  echo "Please generate and download from your AppDynamics CNAO Tenant."
+  echo "Please generate and download from your Cisco Cloud Observability Tenant."
   echo "For more information, visit:"
   echo "  https://docs.appdynamics.com/fso/cloud-native-app-obs/en/kubernetes-and-app-service-monitoring"
   exit 1
@@ -48,7 +47,7 @@ fi
 # check if 'collectors-values.yaml' file exists.
 if [ ! -f "collectors-values.yaml" ]; then
   echo "ERROR: 'collectors-values.yaml' file NOT found."
-  echo "Please generate and download from your AppDynamics CNAO Tenant."
+  echo "Please generate and download from your Cisco Cloud Observability Tenant."
   echo "For more information, visit:"
   echo "  https://docs.appdynamics.com/fso/cloud-native-app-obs/en/kubernetes-and-app-service-monitoring"
   exit 1
@@ -90,9 +89,9 @@ aws_eks_cluster_name="${AWS_EKS_CLUSTER}"
 # escape forward slashes '/' in eks cluster name before substitution.
 aws_eks_cluster_name_escaped=$(echo ${aws_eks_cluster_name} | sed 's/\//\\\//g')
 
-# extract cnao configuration values for use with terraform. ----------------------------------------
+# extract cco configuration values for use with terraform. -----------------------------------------
 # extract helm chart values from 'operators-values' and 'collectors-values.yaml'.
-echo "Extracting CNAO configuration values..."
+echo "Extracting Cisco Cloud Observability configuration values..."
 client_id=$(yq '.appdynamics-otel-collector.clientId' collectors-values.yaml)
 client_secret=$(yq '.appdynamics-otel-collector.clientSecret' collectors-values.yaml)
 cluster_name=$(yq '.global.clusterName' collectors-values.yaml)
@@ -116,17 +115,17 @@ sed -i.bak -e "/^#aws_eks_cluster_name =/s/^.*$/aws_eks_cluster_name = \"${aws_e
 
 # substitute the helm chart variables. -------------------------------------------------------------
 echo "Substituting Helm Chart variables..."
-sed -i.bak -e "/^#cnao_client_id =/s/^.*$/cnao_client_id = \"${client_id_escaped}\"/" terraform.tfvars
-sed -i.bak -e "/^#cnao_client_secret =/s/^.*$/cnao_client_secret = \"${client_secret_escaped}\"/" terraform.tfvars
-sed -i.bak -e "/^#cnao_cluster_name =/s/^.*$/cnao_cluster_name = \"${cluster_name_escaped}\"/" terraform.tfvars
-sed -i.bak -e "/^#cnao_collector_endpoint =/s/^.*$/cnao_collector_endpoint = \"${collector_endpoint_escaped}\"/" terraform.tfvars
-sed -i.bak -e "/^#cnao_operators_endpoint =/s/^.*$/cnao_operators_endpoint = \"${operators_endpoint_escaped}\"/" terraform.tfvars
-sed -i.bak -e "/^#cnao_tenant_id =/s/^.*$/cnao_tenant_id = \"${tenant_id_escaped}\"/" terraform.tfvars
-sed -i.bak -e "/^#cnao_token_url =/s/^.*$/cnao_token_url = \"${token_url_escaped}\"/" terraform.tfvars
+sed -i.bak -e "/^#cco_client_id =/s/^.*$/cco_client_id = \"${client_id_escaped}\"/" terraform.tfvars
+sed -i.bak -e "/^#cco_client_secret =/s/^.*$/cco_client_secret = \"${client_secret_escaped}\"/" terraform.tfvars
+sed -i.bak -e "/^#cco_cluster_name =/s/^.*$/cco_cluster_name = \"${cluster_name_escaped}\"/" terraform.tfvars
+sed -i.bak -e "/^#cco_collector_endpoint =/s/^.*$/cco_collector_endpoint = \"${collector_endpoint_escaped}\"/" terraform.tfvars
+sed -i.bak -e "/^#cco_operators_endpoint =/s/^.*$/cco_operators_endpoint = \"${operators_endpoint_escaped}\"/" terraform.tfvars
+sed -i.bak -e "/^#cco_tenant_id =/s/^.*$/cco_tenant_id = \"${tenant_id_escaped}\"/" terraform.tfvars
+sed -i.bak -e "/^#cco_token_url =/s/^.*$/cco_token_url = \"${token_url_escaped}\"/" terraform.tfvars
 
 # remove temporary backup file.
 echo "Removing temporary backup file..."
 rm -f terraform.tfvars.bak
 
 # print completion message.
-echo "CNAO configuration values extraction complete."
+echo "Cisco Cloud Observability configuration values extraction complete."

@@ -70,40 +70,40 @@ output "resource_tags" {
   value       = local.resource_tags
 }
 
-output "cnao_client_id" {
-  description = "Defines the client ID for authenticating with Cloud Native Application Observability."
-  value       = var.cnao_client_id
+output "cco_client_id" {
+  description = "Defines the client ID for authenticating with Cisco Cloud Observability."
+  value       = var.cco_client_id
   sensitive   = true
 }
 
-output "cnao_client_secret" {
-  description = "Defines the secret string in plaintext for authenticating with Cloud Native Application Observability."
-  value       = var.cnao_client_secret
+output "cco_client_secret" {
+  description = "Defines the secret string in plaintext for authenticating with Cisco Cloud Observability."
+  value       = var.cco_client_secret
   sensitive   = true
 }
 
-output "cnao_cluster_name" {
+output "cco_cluster_name" {
   description = "The name of the cluster that is displayed in the UI."
-  value       = var.cnao_cluster_name
+  value       = var.cco_cluster_name
 }
 
-output "cnao_collector_endpoint" {
+output "cco_collector_endpoint" {
   description = "Defines the endpoint the collector uses to send data for the Appdynamics Collectors."
-  value       = var.cnao_collector_endpoint
+  value       = var.cco_collector_endpoint
 }
 
-output "cnao_operators_endpoint" {
+output "cco_operators_endpoint" {
   description = "Defines the endpoint the collector uses to send data for the Appdynamics Operators."
-  value       = var.cnao_operators_endpoint
+  value       = var.cco_operators_endpoint
 }
 
-output "cnao_tenant_id" {
-  description = "Tenant ID for the AppDynamics Cloud Native Application Observability tenant."
-  value       = var.cnao_tenant_id
+output "cco_tenant_id" {
+  description = "Tenant ID for the Cisco Cloud Observability tenant."
+  value       = var.cco_tenant_id
 }
 
-output "cnao_token_url" {
-  description = "Authentication token for the AppDynamics Cloud Native Application Observability tenant."
-  value       = var.cnao_token_url
+output "cco_token_url" {
+  description = "Authentication token for the Cisco Cloud Observability tenant."
+  value       = var.cco_token_url
   sensitive   = true
 }
