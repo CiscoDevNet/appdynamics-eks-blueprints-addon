@@ -182,7 +182,7 @@ module "addons" {
   # cisco cloud observability helm charts for kubernetes and app service monitoring.
   helm_releases = {
     # install cisco cloud observability operators.
-    cisco-cloud-observability-operators = {
+    cco-operators = {
       description      = "A Helm chart for the Cisco Cloud Observability Operators."
       namespace        = "appdynamics"
       create_namespace = true
@@ -221,7 +221,7 @@ resource "random_string" "suffix" {
 
 # install cisco cloud observability collectors.
 resource "helm_release" "cisco_cloud_observability_collectors" {
-  name             = "cisco-cloud-observability-collectors"
+  name             = "cco-collectors"
   description      = "A Helm chart for the Cisco Cloud Observability Collectors."
   namespace        = "appdynamics"
   create_namespace = true
