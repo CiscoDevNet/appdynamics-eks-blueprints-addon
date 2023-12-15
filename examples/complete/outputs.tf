@@ -107,3 +107,20 @@ output "cco_token_url" {
   value       = var.cco_token_url
   sensitive   = true
 }
+
+output "cco_security_monitoring_enabled" {
+  description = "Set to 'true' if Security Monitoring is enabled."
+  value       = var.cco_security_monitoring_enabled
+}
+
+output "cco_shared_secret" {
+  description = "Defines the secret string in plaintext for authenticating with Cisco Secure Application."
+  value       = var.cco_shared_secret
+  sensitive   = true
+}
+
+output "cco_agent_id" {
+  description = "Defines the agent ID for authenticating with Cisco Secure Application."
+  value       = var.cco_agent_id
+  sensitive   = true
+}

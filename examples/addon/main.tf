@@ -43,6 +43,28 @@ provider "kubectl" {
 
 # Locals -------------------------------------------------------------------------------------------
 locals {
+  # create the cisco cloud observability operators values content from the helm chart template.
+  operators_values_content = templatefile("${path.module}/templates/operators-values.yaml.tmpl", {
+                               client_id          = var.cco_client_id
+                               client_secret      = var.cco_client_secret
+                               cluster_name       = var.cco_cluster_name
+                               operators_endpoint = var.cco_operators_endpoint
+                               tenant_id          = var.cco_tenant_id
+                               token_url          = var.cco_token_url
+                             })
+
+  # create the cisco cloud observability collectors values content from the helm chart template.
+  collectors_values_content = templatefile("${path.module}/templates/collectors-values.yaml.tmpl", {
+                                client_id                   = var.cco_client_id
+                                client_secret               = var.cco_client_secret
+                                cluster_name                = var.cco_cluster_name
+                                collector_endpoint          = var.cco_collector_endpoint
+                                token_url                   = var.cco_token_url
+                                security_monitoring_enabled = var.cco_security_monitoring_enabled
+                                agent_id                    = var.cco_agent_id
+                                shared_secret               = var.cco_shared_secret
+                              })
+
   # define common tag names for aws resources.
   resource_tags = {
     EnvironmentHome = var.resource_environment_home_tag
@@ -101,20 +123,13 @@ module "addons" {
       namespace        = "appdynamics"
       create_namespace = true
       chart            = "appdynamics-operators"
-#     chart_version    = "1.16.201"
+#     chart_version    = "1.17.244"
       repository       = "https://appdynamics.jfrog.io/artifactory/appdynamics-cloud-helmcharts"
       wait             = true
       wait_for_jobs    = true
 
       values = [
-        templatefile("${path.module}/templates/operators-values.yaml.tmpl", {
-          client_id          = var.cco_client_id
-          client_secret      = var.cco_client_secret
-          cluster_name       = var.cco_cluster_name
-          operators_endpoint = var.cco_operators_endpoint
-          tenant_id          = var.cco_tenant_id
-          token_url          = var.cco_token_url
-        })
+        local.operators_values_content
       ]
 
 #     # use this syntax to import your own 'operators-values.yaml' file without the template file.
@@ -135,19 +150,13 @@ resource "helm_release" "cisco_cloud_observability_collectors" {
   namespace        = "appdynamics"
   create_namespace = true
   chart            = "appdynamics-collectors"
-# version          = "1.16.765"
+# version          = "1.17.880"
   repository       = "https://appdynamics.jfrog.io/artifactory/appdynamics-cloud-helmcharts"
   wait             = true
   wait_for_jobs    = true
 
   values = [
-    templatefile("${path.module}/templates/collectors-values.yaml.tmpl", {
-      client_id             = var.cco_client_id
-      client_secret         = var.cco_client_secret
-      cluster_name          = var.cco_cluster_name
-      collector_endpoint    = var.cco_collector_endpoint
-      token_url             = var.cco_token_url
-    })
+    local.collectors_values_content
   ]
 
 # # use this syntax to import your own 'collectors-values.yaml' file without the template file.
@@ -160,4 +169,20 @@ resource "helm_release" "cisco_cloud_observability_collectors" {
   depends_on = [
     module.addons
   ]
+}
+
+# uncomment the following 'local_file' resource definitions as needed for debugging.
+# persist the files generated from the helm chart templates to the local directory for viewing.
+# generate the cisco cloud observability operators values file from the helm chart template.
+resource "local_file" "operators_values_file" {
+  filename = "generated-operators-values.yaml"
+  content  = local.operators_values_content
+  file_permission = "0644"
+}
+
+# generate the cisco cloud observability collectors values file from the helm chart template.
+resource "local_file" "collectors_values_file" {
+  filename = "generated-collectors-values.yaml"
+  content  = local.collectors_values_content
+  file_permission = "0644"
 }

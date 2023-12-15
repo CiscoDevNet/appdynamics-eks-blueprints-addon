@@ -75,3 +75,23 @@ variable "cco_token_url" {
   type        = string
   sensitive   = true
 }
+
+variable "cco_security_monitoring_enabled" {
+  description = "Set to 'true' if Security Monitoring is enabled."
+  type        = bool
+  default     = false
+}
+
+variable "cco_shared_secret" {
+  description = "Defines the secret string in plaintext for authenticating with Cisco Secure Application."
+  type        = string
+  default     = ""
+  sensitive   = true
+}
+
+variable "cco_agent_id" {
+  description = "Defines the agent ID for authenticating with Cisco Secure Application."
+  type        = string
+  default     = ""
+  sensitive   = true
+}

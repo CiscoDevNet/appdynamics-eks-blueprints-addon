@@ -123,6 +123,25 @@ sed -i.bak -e "/^#cco_operators_endpoint =/s/^.*$/cco_operators_endpoint = \"${o
 sed -i.bak -e "/^#cco_tenant_id =/s/^.*$/cco_tenant_id = \"${tenant_id_escaped}\"/" terraform.tfvars
 sed -i.bak -e "/^#cco_token_url =/s/^.*$/cco_token_url = \"${token_url_escaped}\"/" terraform.tfvars
 
+# check if security monitoring has been enabled. ---------------------------------------------------
+# if enabled, the 'appdynamics-security-collector' section will be present.
+if grep -qF -- "appdynamics-security-collector:" "collectors-values.yaml"; then
+  # extract security monitoring helm chart values from 'collectors-values.yaml'.
+  echo "Extracting Cisco Cloud Observability Security Monitorng configuration values..."
+  agent_id=$(yq '.appdynamics-security-collector.panoptica.controller.agentID' collectors-values.yaml)
+  shared_secret=$(yq '.appdynamics-security-collector.panoptica.controller.secret.sharedSecret' collectors-values.yaml)
+
+  # escape forward slashes '/' in chart values before substitution.
+  agent_id_escaped=$(echo ${agent_id} | sed 's/\//\\\//g')
+  shared_secret_escaped=$(echo ${shared_secret} | sed 's/\//\\\//g')
+
+  # substitute the helm chart variables.
+  echo "Substituting Helm Chart variables for Security Monitoring..."
+  sed -i.bak -e "/^#cco_security_monitoring_enabled =/s/^.*$/cco_security_monitoring_enabled = \"true\"/" terraform.tfvars
+  sed -i.bak -e "/^#cco_agent_id =/s/^.*$/cco_agent_id = \"${agent_id_escaped}\"/" terraform.tfvars
+  sed -i.bak -e "/^#cco_shared_secret =/s/^.*$/cco_shared_secret = \"${shared_secret_escaped}\"/" terraform.tfvars
+fi
+
 # remove temporary backup file.
 echo "Removing temporary backup file..."
 rm -f terraform.tfvars.bak

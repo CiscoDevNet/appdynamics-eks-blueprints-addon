@@ -431,3 +431,12 @@ appdynamics-otel-collector:
   clientSecret: ${client_secret}
   endpoint: ${collector_endpoint}
   tokenUrl: ${token_url}
+%{ if security_monitoring_enabled }
+appdynamics-security-collector:
+  enabled: true
+  panoptica:
+    controller:
+      agentID: ${agent_id}
+      secret:
+        sharedSecret: ${shared_secret}
+%{ endif }

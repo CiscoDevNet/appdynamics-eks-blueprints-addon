@@ -42,3 +42,8 @@
 #cco_operators_endpoint = "<your_cco_operators_endpoint_here>"
 #cco_tenant_id = "<your_cco_tenant_id_here>"
 #cco_token_url = "<your_cco_token_url_here>"
+
+# cisco cloud observability security monitoring helm chart variables.
+#cco_security_monitoring_enabled = false
+#cco_agent_id = "<your_cco_agent_id_here>"
+#cco_shared_secret = "your_cco_shared_secret_here>"
