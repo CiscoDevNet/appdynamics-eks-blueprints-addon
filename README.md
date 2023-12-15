@@ -4,10 +4,8 @@ The Cisco Cloud Observability Add-On for [Amazon EKS Blueprints](https://github.
 enables platform administrators to install the 
 [Kubernetes and App Service Monitoring](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/kubernetes-and-app-service-monitoring) 
 solution for 
-[Cisco Cloud Observability](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/about-cloud-native-application-observability) 
+[Cisco Cloud Observability](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/about-cisco-cloud-observability) 
 using Helm charts via Terraform.  
-
-**NOTE:** This project is currently in Beta and is a work-in-progress. Deployment-ready updates are expected soon! (mid-October 2023).
 
 ## Introduction
 
@@ -69,4 +67,4 @@ In the future, we will be adding support for deployment via the AWS EKS console.
 
 Click on the link below for step-by-step instructions to manually deploy the Cisco Cloud Observability Addon:
 
--	[Manual Steps for Installing the Cisco Cloud Observability Addon](docs/MANUAL_STEPS_FOR_INSTALLING_THE_APPDYNAMICS_ADDON.md)
+-	[Manual Steps for Installing the Cisco Cloud Observability Addon](https://docs.appdynamics.com/fso/cloud-native-app-obs/en/kubernetes-and-app-service-monitoring/install-kubernetes-and-app-service-monitoring-using-amazon-elastic-kubernetes-service/use-the-cisco-cloud-observability-amazon-eks-blueprints-add-on)
