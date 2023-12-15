@@ -17,8 +17,8 @@ tags
 /examples/**/terraform.tfvars
 
 # ignore cisco cloud observability operators and collectors helm charts.
-/examples/**/collectors-values.yaml
-/examples/**/operators-values.yaml
+/examples/**/*collectors-values*.yaml*
+/examples/**/*operators-values*.yaml*
 
 # ignore photoshop image files.
 /docs/**/*.psd
