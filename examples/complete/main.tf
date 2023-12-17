@@ -265,15 +265,15 @@ resource "helm_release" "cisco_cloud_observability_collectors" {
 # uncomment the following 'local_file' resource definitions as needed for debugging.
 # persist the files generated from the helm chart templates to the local directory for viewing.
 # generate the cisco cloud observability operators values file from the helm chart template.
-resource "local_file" "operators_values_file" {
-  filename = "generated-operators-values.yaml"
-  content  = local.operators_values_content
-  file_permission = "0644"
-}
+#resource "local_file" "operators_values_file" {
+#  filename = "generated-operators-values.yaml"
+#  content  = local.operators_values_content
+#  file_permission = "0644"
+#}
 
 # generate the cisco cloud observability collectors values file from the helm chart template.
-resource "local_file" "collectors_values_file" {
-  filename = "generated-collectors-values.yaml"
-  content  = local.collectors_values_content
-  file_permission = "0644"
-}
+#resource "local_file" "collectors_values_file" {
+#  filename = "generated-collectors-values.yaml"
+#  content  = local.collectors_values_content
+#  file_permission = "0644"
+#}
