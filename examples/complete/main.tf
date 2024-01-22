@@ -103,7 +103,7 @@ data "aws_eks_cluster_auth" "this" {
 # Modules ------------------------------------------------------------------------------------------
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = ">= 5.4"
+  version = ">= 5.5"
 
   name = local.vpc_name
   cidr = var.aws_vpc_cidr_block
