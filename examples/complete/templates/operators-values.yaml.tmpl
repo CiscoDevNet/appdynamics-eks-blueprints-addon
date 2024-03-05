@@ -3,6 +3,10 @@ global:
 
 # # Properties for the Cisco AppDynamics Operator
 # appdynamics-cloud-operator:
+  # # Enable installation of the operator.
+  # # [Default]
+  # enabled: true
+
   # # The name to be used for creating the service account for the operator.
   # # [Default]
   # operatorServiceAccount: appdynamics-cloud-operator
@@ -25,8 +29,12 @@ global:
     # # Image pull policy for the operator pod.
     # # [Default]
     # imagePullPolicy: Always
+    
+    # # PriorityClass assigned to the operator pod.
+    # # [Default]
+    # priorityClassName: null
 
-    # # Resources you assign to the operator pod.
+    # # Resources assigned to the operator pod.
     # # [Default]
     # resources:
     #   limits:

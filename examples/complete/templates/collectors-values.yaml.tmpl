@@ -1,11 +1,35 @@
 global:
   clusterName: ${cluster_name}
+  oauth:
+    clientId: ${client_id}
+    clientSecret: ${client_secret}
+    endpoint: ${collector_endpoint}
+    tokenUrl: ${token_url}
+  # # If Proxy is needed for agent Management
+  # # [Default]
+  # agentManagementProxy:
+  #   httpProxy: ""
+  #   httpsProxy: ""
+  #   noProxy: []
+  # # [Example]
+  # agentManagementProxy:
+  #   httpProxy: http://example-proxy.com
+  #   httpsProxy: https://example-proxy.com
+  #   noProxy:
+  #     - http://example-dont-use-for-url1.com
+  #     - https://example-dont-use-for-url2.com
+
 appdynamics-cloud-k8s-monitoring:
   install:
-    clustermon: true
-    defaultInfraCollectors: true
-    logCollector: true
-
+    clustermon: true 
+    defaultInfraCollectors: true 
+    logCollector: true    
+  # # Enable disable agent Management for collectors
+  # # [Default]
+  # agentManagementEnabled:
+    # clustermon: true
+    # defaultInfraCollectors: true
+    # logCollector: true
   # # The name to be used for creating the service account for the cluster collector.
   # # [Default]
   # clustermonServiceAccount: appdynamics-clustermon
@@ -59,9 +83,9 @@ appdynamics-cloud-k8s-monitoring:
     # # Configuration override for ingress controller labels and metrics port.
     # # [Default]
     # ingressControllers:
-    #   nginx:
+    #   nginx: 
     #     port: 10254
-    #     labels:
+    #     labels: 
     #     app.kubernetes.io/component: controller
     #     app.kubernetes.io/instance: ingress-nginx
     #     app.kubernetes.io/name: ingress-nginx
@@ -81,7 +105,7 @@ appdynamics-cloud-k8s-monitoring:
     #   enabled: true
 
   # Configurations for the infrastructure manager (used by cluster collector and infra collectors)
-  infraManagerConfig:
+  # infraManagerConfig:
     # # The log level of the infrastructure manager. (info/debug)
     # # [Default]
     # logLevel: info
@@ -128,6 +152,10 @@ appdynamics-cloud-k8s-monitoring:
     os:
       - linux
 
+    # # The port used to start Node Exporter.
+    # # [Default]
+    # exporterPort: 9100
+
     # # The log level of the collector. (info/debug)
     # # [Default]
     # logLevel: info
@@ -157,11 +185,15 @@ appdynamics-cloud-k8s-monitoring:
     # # [Default]
     # image: appdynamics/appdynamics-cloud-k8s-monitoring:<latest-available-tag>
 
-    # # Image pull policy for the operator pod.
+    # # Image pull policy for the Cluster Collector pod.
     # # [Default]
     # imagePullPolicy: Always
 
-    # # Resources you assign to the operator pod.
+    # # PriorityClass assigned to the Cluster Collector pod.
+    # # [Default]
+    # priorityClassName: null
+       
+    # # Resources you assign to the Cluster Collector pod.
     # # [Default]
     # resources:
     #   limits:
@@ -241,11 +273,15 @@ appdynamics-cloud-k8s-monitoring:
     # # [Default]
     # image: appdynamics/appdynamics-cloud-k8s-monitoring:<latest-available-tag>
 
-    # # Image pull policy for the operator pod.
+    # # Image pull policy for the Infrastructure Collector pod.
     # # [Default]
     # imagePullPolicy: Always
-
-    # # Resources you assign to the operator pod.
+    
+    # # PriorityClass assigned to the Infrastructure Collector pod.
+    # # [Default]
+    # priorityClassName: null
+    
+    # # Resources you assign to the Infrastructure Collector pod.
     # # [Default (for linux)]
     # resources:
     #   limits:
@@ -342,17 +378,17 @@ appdynamics-cloud-k8s-monitoring:
     container:
       # With DefaultConfig, LCA will collect logs from all the pods in that node, except collector logs(Clustermon, InfraMon, LCA, Otel). Default value is true
       defaultConfig:
-        enabled: true
+        enabled: true 
       #These are optional fields for defaultConfig. If nothing is provided, each line will be treated as new line and messageParser will be Timestamp. Customer can override this and give their values.
-        # multiLinePattern: '^{'
-        # multiLineMatch: "after"
-        # multiLineNegate: true
-        # logFormat: "logs:email_logs"
-        # messageParser:
-        #   json:
-        #     enabled: true
-      # With monitorCollectors enabled, LCA will collect Appd logs(Clustermon, InfraMon, LCA, Otel). Default value is false.
-      # monitorCollectors: false
+        multiLinePattern: '^{'
+        multiLineMatch: "after"
+        multiLineNegate: true
+        logFormat: "logs:email_logs"
+        messageParser:           
+          json:
+            enabled: true
+      # With monitorCollectors enabled, LCA will collect Appd logs(Clustermon, InfraMon, LCA, Otel). Default value is false.        
+      # monitorCollectors: false      
       # With excludeCondition, we can specify exclude conditions. Logs from pods that match the condition wont be collected. Default value is "". Uncomment to use excludeCondition
       # excludeCondition:
         # or:
@@ -363,7 +399,7 @@ appdynamics-cloud-k8s-monitoring:
         #   - equals:
         #       k8s.pod.name: log-gen-app-json-linux-669446bcdb-8kngd
         #   - equals:
-        #       kubernetes.pod.name: log-gen-app-json-linux-669446bcdb-8kngd
+        #       kubernetes.pod.name: log-gen-app-json-linux-669446bcdb-8kngd         
       # Logs from pods, that match these conditions will be collected. Uncomment to use conditional Configs.
       # conditionalConfigs:
       #  - condition:
@@ -372,7 +408,7 @@ appdynamics-cloud-k8s-monitoring:
       #           kubernetes.container.name: log-gen-app-log4j-windows
       #       - contains:
       #           kubernetes.container.name: log-gen-app-log4j
-      #    config:
+      #    config: 
       #     multiLinePattern: '^\d{4}\-\d{2}\-\d{2}'
       #     multiLineNegate: true
       #     multiLineMatch: "after"
@@ -381,56 +417,246 @@ appdynamics-cloud-k8s-monitoring:
       #       log4J:
       #         enabled: true
       #         pattern: "%d{yyyy-MM-dd'T'HH:mm:ss} %p %C{1.} [%t] %m%n"
-    # With env.linux or env.windows we can override configs specific to that os.
+    # With env.linux or env.windows we can override configs specific to that os.    
     # env:
-    #   linux:
-      # container:
-        # defaultConfig:
-        # With DefaultConfig, LCA will collect logs from all the pods in that node, except Appd logs(Clustermon, InfraMon, LCA, Otel). Default value is true
-          # enabled: true
-        #These are optional fields for defaultConfig. If nothing is provided, each line will be treated as new line and messageParser will be Timestamp. Customer can override this and give their values.
-          # multiLinePattern: '^{'
-          # multiLineMatch: "after"
-          # multiLineNegate: true
-          # logFormat: "logs:email_logs"
-          # messageParser:
-          #   json:
-          #     enabled: true
-        # With monitorCollectors enabled, LCA will collect Appd logs(Clustermon, InfraMon, LCA, Otel). Default value is false.
-        # monitorCollectors: false
-        # With excludeCondition, we can specify exclude conditions. Logs from pods that match the condition wont be collected. Default value is "". Uncomment to use excludeCondition
-        # excludeCondition:
-        #   or:
-        #     - contains:
-        #         kubernetes.namespace: default
-        #     - contains:
-        #         kubernetes.namespace: falco
-        #     - equals:
-        #         k8s.pod.name: log-gen-app-json-linux-669446bcdb-8kngd
-        #     - equals:
-        #         kubernetes.pod.name: log-gen-app-json-linux-669446bcdb-8kngd
-        # Logs from pods, that match these conditions will be collected. Uncomment to use conditional Configs.
-        # conditionalConfigs:
-        #  - condition:
-        #     or:
-        #       - contains:
-        #           kubernetes.container.name: log-gen-app-log4j-windows
-        #       - contains:
-        #           kubernetes.container.name: log-gen-app-log4j
-        #    config:
-        #     multiLinePattern: '^\d{4}\-\d{2}\-\d{2}'
-        #     multiLineNegate: true
-        #     multiLineMatch: "after"
-        #     logFormat: "logs:email_logs"
-        #     messageParser:
-        #       log4J:
-        #         enabled: true
-        #         pattern: "%d{yyyy-MM-dd'T'HH:mm:ss} %p %C{1.} [%t] %m%n"
+      # linux: 
+        # container:
+          # defaultConfig:
+          # With DefaultConfig, LCA will collect logs from all the pods in that node, except Appd logs(Clustermon, InfraMon, LCA, Otel). Default value is true
+          #   enabled: true 
+          # These are optional fields for defaultConfig. If nothing is provided, each line will be treated as new line and messageParser will be Timestamp. Customer can override this and give their values.
+          #   multiLinePattern: '^{'
+          #   multiLineMatch: "after"
+          #   multiLineNegate: true
+          #   logFormat: "logs:email_logs"
+          #   messageParser:           
+          #     json:
+          #       enabled: true
+          # With monitorCollectors enabled, LCA will collect Appd logs(Clustermon, InfraMon, LCA, Otel). Default value is false.        
+          # monitorCollectors: false      
+          # With excludeCondition, we can specify exclude conditions. Logs from pods that match the condition wont be collected. Default value is "". Uncomment to use excludeCondition
+          # excludeCondition:
+          #   or:
+          #     - contains:
+          #         kubernetes.namespace: default
+          #     - contains:
+          #         kubernetes.namespace: falco
+          #     - equals:
+          #         k8s.pod.name: log-gen-app-json-linux-669446bcdb-8kngd
+          #     - equals:
+          #         kubernetes.pod.name: log-gen-app-json-linux-669446bcdb-8kngd         
+          # Logs from pods, that match these conditions will be collected. Uncomment to use conditional Configs.
+          # conditionalConfigs:
+          #  - condition:
+          #     or:
+          #       - contains:
+          #           kubernetes.container.name: log-gen-app-log4j-windows
+          #       - contains:
+          #           kubernetes.container.name: log-gen-app-log4j
+          #    config: 
+          #     multiLinePattern: '^\d{4}\-\d{2}\-\d{2}'
+          #     multiLineNegate: true
+          #     multiLineMatch: "after"
+          #     logFormat: "logs:email_logs"
+          #     messageParser:
+          #       log4J:
+          #         enabled: true
+          #         pattern: "%d{yyyy-MM-dd'T'HH:mm:ss} %p %C{1.} [%t] %m%n"           
 appdynamics-otel-collector:
   clientId: ${client_id}
   clientSecret: ${client_secret}
   endpoint: ${collector_endpoint}
   tokenUrl: ${token_url}
+  # This allows you to enable or disable the Network Collector related receiver & processors.
+  # Note: This must be enabled along with "appdynamics-network-monitoring.enabled" configuration. 
+  enableNetworkMonitoring: true
+
+# Configurations for the Network Collector
+appdynamics-network-monitoring:
+  enabled: true
+  # # The log level of the collector. (error/warning/info/debug/trace)
+  # # [Default]
+  # log:
+  #   level: warning
+  
+  # # Properties for the Kernel Collector
+  # kernelCollector:
+    # # This allows you to enable or disable the Kernel Collector portion of the Network Collector.
+    # # [Default]
+    # enabled: true
+  
+    # # The Kernel Collector image address in format: <registryAccount>/<project>:<tag>
+    # # [Default]
+    # image: otel/opentelemetry-ebpf-kernel-collector:v0.10.2
+  
+    # # Image pull policy for the pod.
+    # # [Default]
+    # imagePullPolicy: Always
+  
+    # # Image pull secrets for the pod.
+    # # [Default]
+    # imagePullSecrets: []
+  
+    # # Node selector for the pod.
+    # # [Default]
+    # nodeSelector:
+    #   kubernetes.io/arch: amd64
+    #   kubernetes.io/os: linux
+  
+    # # Defines the service account that is created and assigned to the Kernel Collector
+    # # [Default]
+    # serviceAccount:
+    #   create: false
+    #   name: ""
+  
+    # # Tolerations for the pod.
+    # # [Default]
+    # tolerations:
+    # - operator: "Exists"
+    #   effect: "NoExecute"
+    # - operator: "Exists"
+    #   effect: "NoSchedule"
+  
+    # # Affinity for the pod.
+    # # [Default]
+    # affinity: {}
+  
+    # # Resources you assign to the pod.
+    # # [Default]
+    # resources: {}
+  
+  # # Properties for the Kubernetes Collector
+  # k8sCollector:
+    # # This allows you to enable or disable the Kubernetes Collector portion of the Network Collector.
+    # # [Default]
+    # enabled: true
+  
+    # # Defines the k8s-relay container in the pod.
+    # relay:
+      # # The k8s-relay image address in format: <registryAccount>/<project>:<tag>
+      # # [Default]
+      # image: otel/opentelemetry-ebpf-k8s-relay:v0.10.2
+  
+      # # Image pull policy for the container.
+      # # [Default]
+      # imagePullPolicy: Always
+      
+      # # Resources you assign to the container.
+      # # [Default]
+      # resources: {}
+  
+    # # Defines the k8s-watcher container in the pod.
+    # watcher:
+      # # The k8s-watcher image address in format: <registryAccount>/<project>:<tag>
+      # # [Default]
+      # image: otel/opentelemetry-ebpf-k8s-watcher:v0.10.2
+  
+      # # Image pull policy for the container.
+      # # [Default]
+      # imagePullPolicy: Always
+      
+      # # Resources you assign to the container.
+      # # [Default]
+      # resources: {}
+  
+    # # Image pull secrets for the pod.
+    # # [Default]  
+    # imagePullSecrets: []
+    
+    # # Node selector for the pod.
+    # # [Default]
+    # nodeSelector:
+    #   kubernetes.io/arch: amd64
+    #   kubernetes.io/os: linux
+  
+    # # Affinity for the pod.
+    # # [Default]
+    # affinity: {}
+  
+    # # Tolerations for the pod.
+    # # [Default]
+    # tolerations: []
+  
+    # # Defines the service account that is created and assigned to the Kubernetes Collector
+    # # [Default]  
+    # serviceAccount:
+    #   create: false
+    #   name: ""
+  
+  # # Properties for the Reducer
+  # reducer:
+    # # Scale the Reducer processing capacity by increasing the number of ingestion shards.
+    # # [Default]
+    # ingestShards: 1
+  
+    # # Scale the Reducer processing capacity by increasing the number of matching shards.
+    # # [Default]
+    # matchingShards: 1
+  
+    # # Scale the Reducer processing capacity by increasing the number of aggregation shards.
+    # # [Default]
+    # aggregationShards: 1
+  
+    # # Disable specific metrics from being generated (applied before any enableMetrics configs).
+    # # [Example]
+    # disableMetrics:
+    # # To disable an entire metric category:
+    # - tcp.all
+    # # To disable a single metric:
+    # - udp.bytes
+    # # [Default]
+    # disableMetrics:
+    # - ebpf_net.all
+  
+    # # Enable which metrics to be generated (applied after any disableMetrics configs).
+    # # [Example]
+    # enableMetrics:
+    # # To enable an entire metric category:
+    # - tcp.all
+    # # To enable a single metric:
+    # - udp.bytes
+    # # [Default]
+    # enableMetrics: []
+  
+    # # Port used to listen for incoming connections from Kernel and Kubernetes Collectors.
+    # # [Default]
+    # telemetryPort: 7000
+  
+    # # The Reducer image address in format: <registryAccount>/<project>:<tag>
+    # # [Default]
+    # image: otel/opentelemetry-ebpf-reducer:v0.10.2
+  
+    # # Image pull policy for the pod.
+    # # [Default]
+    # imagePullPolicy: Always
+  
+    # # Image pull secrets for the pod.
+    # # [Default] 
+    # imagePullSecrets: []
+  
+    # # Resources you assign to the pod.
+    # # [Default]
+    # resources: {}
+  
+    # # Node selector for the pod.
+    # # [Default]
+    # nodeSelector:
+    #   kubernetes.io/arch: amd64
+    #   kubernetes.io/os: linux
+  
+    # # Affinity for the pod.
+    # # [Default]
+    # affinity: {}
+  
+    # # Tolerations for the pod.
+    # # [Default]
+    # tolerations: []
+  
+  # # If set to true, a Kubernetes Role is created. The Role is bound to the serviceAccount defined at k8sCollector.serviceAccount.
+  # # [Default]
+  # rbac:
+  #   create: true
+
 %{ if security_monitoring_enabled }
 appdynamics-security-collector:
   enabled: true
