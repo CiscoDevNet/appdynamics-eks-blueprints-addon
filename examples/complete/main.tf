@@ -1,5 +1,5 @@
 /**
- * Copyright 2023 Cisco Systems, Inc. and its affiliates
+ * Copyright 2024 Cisco Systems, Inc. and its affiliates
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -133,7 +133,7 @@ module "vpc" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = ">= 19.21.0"
+  version = ">= 20.5.0"
 
   cluster_name    = local.cluster_name
   cluster_version = var.aws_eks_kubernetes_version
@@ -178,12 +178,13 @@ module "eks" {
     }
   }
 
-  manage_aws_auth_configmap = true
+  authentication_mode = "API"
+  enable_cluster_creator_admin_permissions = true
 }
 
 module "addons" {
   source  = "aws-ia/eks-blueprints-addons/aws"
-  version = ">= 1.12"
+  version = ">= 1.15"
 
   cluster_name      = data.aws_eks_cluster.cluster.id
   cluster_endpoint  = data.aws_eks_cluster.cluster.endpoint
@@ -209,7 +210,7 @@ module "addons" {
       namespace        = "appdynamics"
       create_namespace = true
       chart            = "appdynamics-operators"
-#     chart_version    = "1.17.244"
+#     chart_version    = "1.19.289"
       repository       = "https://appdynamics.jfrog.io/artifactory/appdynamics-cloud-helmcharts"
       wait             = true
       wait_for_jobs    = true
@@ -241,7 +242,7 @@ resource "helm_release" "cisco_cloud_observability_collectors" {
   namespace        = "appdynamics"
   create_namespace = true
   chart            = "appdynamics-collectors"
-# version          = "1.17.880"
+# version          = "1.19.1062"
   repository       = "https://appdynamics.jfrog.io/artifactory/appdynamics-cloud-helmcharts"
   wait             = true
   wait_for_jobs    = true

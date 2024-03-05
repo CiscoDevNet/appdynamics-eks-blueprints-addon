@@ -1,5 +1,5 @@
 /**
- * Copyright 2023 Cisco Systems, Inc. and its affiliates
+ * Copyright 2024 Cisco Systems, Inc. and its affiliates
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,7 +97,7 @@ data "aws_iam_openid_connect_provider" "oidc_provider" {
 # Modules ------------------------------------------------------------------------------------------
 module "addons" {
   source  = "aws-ia/eks-blueprints-addons/aws"
-  version = ">= 1.12"
+  version = ">= 1.15"
 
   cluster_name      = data.aws_eks_cluster.cluster.id
   cluster_endpoint  = data.aws_eks_cluster.cluster.endpoint
@@ -123,7 +123,7 @@ module "addons" {
       namespace        = "appdynamics"
       create_namespace = true
       chart            = "appdynamics-operators"
-#     chart_version    = "1.17.244"
+#     chart_version    = "1.19.289"
       repository       = "https://appdynamics.jfrog.io/artifactory/appdynamics-cloud-helmcharts"
       wait             = true
       wait_for_jobs    = true
@@ -150,7 +150,7 @@ resource "helm_release" "cisco_cloud_observability_collectors" {
   namespace        = "appdynamics"
   create_namespace = true
   chart            = "appdynamics-collectors"
-# version          = "1.17.880"
+# version          = "1.19.1062"
   repository       = "https://appdynamics.jfrog.io/artifactory/appdynamics-cloud-helmcharts"
   wait             = true
   wait_for_jobs    = true

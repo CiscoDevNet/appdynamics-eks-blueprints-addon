@@ -1,5 +1,5 @@
 /**
- * Copyright 2023 Cisco Systems, Inc. and its affiliates
+ * Copyright 2024 Cisco Systems, Inc. and its affiliates
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -111,7 +111,7 @@ module "vpc" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = ">= 19.21.0"
+  version = ">= 20.5.0"
 
   cluster_name    = local.cluster_name
   cluster_version = var.aws_eks_kubernetes_version
@@ -156,7 +156,8 @@ module "eks" {
     }
   }
 
-  manage_aws_auth_configmap = true
+  authentication_mode = "API"
+  enable_cluster_creator_admin_permissions = true
 }
 
 # Resources ----------------------------------------------------------------------------------------

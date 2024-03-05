@@ -1,5 +1,5 @@
 /**
- * Copyright 2023 Cisco Systems, Inc. and its affiliates
+ * Copyright 2024 Cisco Systems, Inc. and its affiliates
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,17 @@
 
 # Terraform ----------------------------------------------------------------------------------------
 terraform {
-  required_version = ">= 1.7.0"
+  required_version = ">= 1.7.4"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 5.33"
+      version = ">= 5.39"
     }
 
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = ">= 2.25"
+      version = ">= 2.26"
     }
 
     helm = {
