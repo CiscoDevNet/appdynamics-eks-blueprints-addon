@@ -28,7 +28,7 @@ etc.
 
 Terraform is used to automate the deployment of the Cisco Cloud Observability Add-On for Amazon EKS Blueprints.  
 Installation guides for your platform can be found 
-[here](https://developer.hashicorp.com/terraform/downloads).
+[here](https://developer.hashicorp.com/terraform/install).
 
 ### Helm
 
@@ -50,8 +50,8 @@ Instructions for
 section of the Amazon EKS User Guide.  
 
 **NOTE:** You must use a `kubectl` version that is within one minor version difference of your Amazon 
-EKS cluster control plane. For example, a 1.27 `kubectl` client works with Kubernetes 1.26, 1.27, and 
-1.28 clusters.
+EKS cluster control plane. For example, a 1.28 `kubectl` client works with Kubernetes 1.27, 1.28, and 
+1.29 clusters.
 
 ### yq
 
@@ -91,7 +91,7 @@ The [yq binaries](https://github.com/mikefarah/yq/releases/latest/) can be downl
 
 Although there are many tools available to accomplish the project's automation goals, it was decided to 
 standardize on [Packer](https://www.packer.io/), [Terraform](https://www.terraform.io/), and 
-[Terraform Cloud](https://cloud.hashicorp.com/products/terraform) from HashiCorp. This is primarily due 
+[Terraform Cloud](https://www.hashicorp.com/cloud/) from HashiCorp. This is primarily due 
 to their capability for building and deploying software platforms to multi-cloud environments, as well 
 as having a high level of adoption within the developer community.
 
@@ -127,7 +127,7 @@ subnets, security groups, load balancers, Kubdernetes clusters, and Lab VM using
 
 ### Terraform Cloud
 
-[Terraform Cloud](https://cloud.hashicorp.com/products/terraform) is HashiCorp’s managed service offering 
+[Terraform Cloud](https://www.hashicorp.com/cloud/) is HashiCorp’s managed service offering 
 for Terraform. It eliminates the need for unnecessary tooling and documentation for practitioners, teams, 
 and organizations to use Terraform in production.
 
@@ -148,32 +148,32 @@ specific instructions for installing the required software are left as an exerci
 
 For macOS environments, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 4.2.5
--	Git 2.43.0
--	Packer 1.10.0
--	Terraform 1.7.0
+-	Homebrew 4.2.11
+-	Git 2.44.0
+-	Packer 1.10.1
+-	Terraform 1.7.4
 -	jq 1.7.1
--	yq 4.40.5
+-	yq 4.42.1
 
 Perform the following steps to install the needed software:
 
-1.	Install the [Homebrew 4.2.5](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+1.	Install the [Homebrew 4.2.11](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     ```bash
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     ```
 
-2.	Install [Git 2.43.0](https://git-scm.com/downloads) for macOS 64-bit.  
+2.	Install [Git 2.44.0](https://git-scm.com/downloads) for macOS 64-bit.  
     ```bash
     brew install git
     ```
 
-3.	Install [Packer 1.10.0](https://www.packer.io/downloads.html) for macOS 64-bit.  
+3.	Install [Packer 1.10.1](https://developer.hashicorp.com/packer/install) for macOS 64-bit.  
     ```bash
     brew tap hashicorp/tap
     brew install hashicorp/tap/packer
     ```
 
-4.	Install [Terraform 1.7.0](https://www.terraform.io/downloads.html) for macOS 64-bit.  
+4.	Install [Terraform 1.7.4](https://developer.hashicorp.com/terraform/install) for macOS 64-bit.  
     ```bash
     brew tap hashicorp/tap
     brew install hashicorp/tap/terraform
@@ -182,7 +182,7 @@ Perform the following steps to install the needed software:
 5.	Install [jq 1.7.1](https://jqlang.github.io/jq/) for macOS 64-bit.  
     `brew install jq`  
 
-6.	Install [yq 4.40.5](https://github.com/mikefarah/yq/) for macOS 64-bit.  
+6.	Install [yq 4.42.1](https://github.com/mikefarah/yq/) for macOS 64-bit.  
     `brew install yq`  
 
 ### Configuration and Validation - macOS
@@ -191,25 +191,25 @@ Perform the following steps to install the needed software:
 
     ```bash
     brew --version
-    # Homebrew 4.2.5
+    # Homebrew 4.2.11
 
     brew doctor
     # Your system is ready to brew.
 
     git --version
-    # git version 2.43.0
+    # git version 2.44.0
 
     packer --version
-    # 1.10.0
+    # 1.10.1
 
     terraform --version
-    # Terraform v1.7.0
+    # Terraform v1.7.4
 
     jq --version
     # jq-1.7.1
 
     yq --version
-    # yq (https://github.com/mikefarah/yq/) version v4.40.5
+    # yq (https://github.com/mikefarah/yq/) version v4.42.1
     ```
 
 2.	Configure Git for local user:
@@ -236,23 +236,23 @@ Here is a list of the recommended open source software to be installed on the ho
 
 -	Curl 7.68.0 (Ubuntu 64-bit only)
 -	Wget 1.21.1 (Ubuntu 64-bit only)
--	Git 2.43.0
--	Packer 1.10.0
--	Terraform 1.7.0
+-	Git 2.44.0
+-	Packer 1.10.1
+-	Terraform 1.7.4
 -	jq 1.7.1
--	yq 4.40.5
+-	yq 4.42.1
 
 ### Git Bash installation - Windows 64-Bit
 
 Perform the following steps to install the needed software:
 
-1.	Install [Git 2.43.0](https://github.com/git-for-windows/git/releases/download/v2.43.0.windows.1/Git-2.43.0-64-bit.exe) for Windows 64-bit.
+1.	Install [Git 2.44.0](https://github.com/git-for-windows/git/releases/download/v2.44.0.windows.1/Git-2.44.0-64-bit.exe) for Windows 64-bit.
 
-2.	Install [Packer 1.10.0](https://releases.hashicorp.com/packer/1.10.0/packer_1.10.0_windows_amd64.zip) for Windows 64-bit.  
+2.	Install [Packer 1.10.1](https://releases.hashicorp.com/packer/1.10.1/packer_1.10.1_windows_amd64.zip) for Windows 64-bit.  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\bin`  
 
-3.	Install [Terraform 1.7.0](https://releases.hashicorp.com/terraform/1.7.0/terraform_1.7.0_windows_amd64.zip) for Windows 64-bit.  
+3.	Install [Terraform 1.7.4](https://releases.hashicorp.com/terraform/1.7.4/terraform_1.7.4_windows_amd64.zip) for Windows 64-bit.  
     Create suggested install folder and extract contents of ZIP file to:  
     `C:\HashiCorp\bin`  
 
@@ -260,7 +260,7 @@ Perform the following steps to install the needed software:
     Create suggested install folder and rename binary to:  
     `C:\Program Files\Git\usr\local\bin\jq.exe`
 
-5.	Install [yq 4.40.5](https://github.com/mikefarah/yq/releases/download/v4.40.5/yq_windows_amd64.exe) for Windows 64-bit.  
+5.	Install [yq 4.42.1](https://github.com/mikefarah/yq/releases/download/v4.42.1/yq_windows_amd64.exe) for Windows 64-bit.  
     Create suggested install folder and rename binary to:  
     `C:\Program Files\Git\usr\local\bin\yq.exe`
 
@@ -281,19 +281,19 @@ Perform the following steps to install the needed software:
 
     ```bash
     git --version
-    # git version 2.43.0.windows.1
+    # git version 2.44.0.windows.1
 
     packer --version
-    # 1.10.0
+    # 1.10.1
 
     terraform --version
-    # Terraform v1.7.0
+    # Terraform v1.7.4
 
     jq --version
     # jq-1.7.1
 
     yq --version
-    # yq (https://github.com/mikefarah/yq/) version v4.40.5
+    # yq (https://github.com/mikefarah/yq/) version v4.42.1
     ```
 
 5.	Configure Git for local user:
@@ -316,25 +316,25 @@ Perform the following steps to install the needed software:
     sudo apt install wget
     ```
 
-3.	Install [Git 2.43.0](https://git-scm.com/downloads) for Ubuntu 64-bit.  
+3.	Install [Git 2.44.0](https://git-scm.com/downloads) for Ubuntu 64-bit.  
     ```bash
     sudo apt install git
     ```
 
-4.	Install [Packer 1.10.0](https://www.packer.io/downloads.html) for Ubuntu 64-bit.  
+4.	Install [Packer 1.10.1](https://developer.hashicorp.com/packer/install) for Ubuntu 64-bit.  
     ```bash
     cd /usr/local/bin
-    sudo wget https://releases.hashicorp.com/packer/1.10.0/packer_1.10.0_linux_amd64.zip
-    sudo unzip packer_1.10.0_linux_amd64.zip
-    sudo rm -i packer_1.10.0_linux_amd64.zip
+    sudo wget https://releases.hashicorp.com/packer/1.10.1/packer_1.10.1_linux_amd64.zip
+    sudo unzip packer_1.10.1_linux_amd64.zip
+    sudo rm -i packer_1.10.1_linux_amd64.zip
     ```
 
-5.	Install [Terraform 1.7.0](https://www.terraform.io/downloads.html) for Ubuntu 64-bit.  
+5.	Install [Terraform 1.7.4](https://developer.hashicorp.com/terraform/installhttps://www.terraform.io/downloads.html) for Ubuntu 64-bit.  
     ```bash
     cd /usr/local/bin
-    sudo wget https://releases.hashicorp.com/terraform/1.7.0/terraform_1.7.0_linux_amd64.zip
-    sudo unzip terraform_1.7.0_linux_amd64.zip
-    sudo rm -i terraform_1.7.0_linux_amd64.zip
+    sudo wget https://releases.hashicorp.com/terraform/1.7.4/terraform_1.7.4_linux_amd64.zip
+    sudo unzip terraform_1.7.4_linux_amd64.zip
+    sudo rm -i terraform_1.7.4_linux_amd64.zip
     ```
 
 6.	Install [jq 1.7.1](https://jqlang.github.io/jq/) for Ubuntu 64-bit.  
@@ -342,7 +342,7 @@ Perform the following steps to install the needed software:
     sudo apt install jq
     ```
 
-7.	Install [yq 4.40.5](https://github.com/mikefarah/yq/) for Ubuntu 64-bit.  
+7.	Install [yq 4.42.1](https://github.com/mikefarah/yq/) for Ubuntu 64-bit.  
     ```bash
     sudo apt install yq
     ```
@@ -354,19 +354,19 @@ Perform the following steps to install the needed software:
 
     ```bash
     git --version
-    # git version 2.43.0
+    # git version 2.44.0
 
     packer --version
-    # 1.10.0
+    # 1.10.1
 
     terraform --version
-    # Terraform v1.7.0
+    # Terraform v1.7.4
 
     jq --version
     # jq-1.7.1
 
     yq --version
-    # yq (https://github.com/mikefarah/yq/) version v4.40.5
+    # yq (https://github.com/mikefarah/yq/) version v4.42.1
     ```
 
 2.	Configure Git for local user:
