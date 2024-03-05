@@ -1,5 +1,5 @@
 /**
- * Copyright 2023 Cisco Systems, Inc. and its affiliates
+ * Copyright 2024 Cisco Systems, Inc. and its affiliates
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -89,11 +89,11 @@ variable "aws_eks_instance_disk_size" {
   default     = 80
 }
 
-# valid aws eks versions are: 1.24, 1.25, 1.26, 1.27, and 1.28.
+# valid aws eks versions are: 1.24, 1.25, 1.26, 1.27, 1.28, and 1.29.
 variable "aws_eks_kubernetes_version" {
   description = "Kubernetes version to use for the EKS cluster."
   type        = string
-  default     = "1.28"
+  default     = "1.29"
 }
 
 variable "ssh_pub_key_name" {
