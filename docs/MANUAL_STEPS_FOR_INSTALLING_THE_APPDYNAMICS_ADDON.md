@@ -148,7 +148,7 @@ specific instructions for installing the required software are left as an exerci
 
 For macOS environments, the following open source software needs to be installed on the host macOS machine:
 
--	Homebrew 4.2.11
+-	Homebrew 4.2.12
 -	Git 2.44.0
 -	Packer 1.10.2
 -	Terraform 1.7.4
@@ -157,7 +157,7 @@ For macOS environments, the following open source software needs to be installed
 
 Perform the following steps to install the needed software:
 
-1.	Install the [Homebrew 4.2.11](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
+1.	Install the [Homebrew 4.2.12](https://brew.sh/) package manager for macOS 64-bit. Paste the following into a macOS Terminal prompt:  
     ```bash
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     ```
@@ -191,7 +191,7 @@ Perform the following steps to install the needed software:
 
     ```bash
     brew --version
-    # Homebrew 4.2.11
+    # Homebrew 4.2.12
 
     brew doctor
     # Your system is ready to brew.
@@ -235,7 +235,7 @@ installation.
 Here is a list of the recommended open source software to be installed on the host Windows machine:
 
 -	Curl 7.68.0 (Ubuntu 64-bit only)
--	Wget 1.21.1 (Ubuntu 64-bit only)
+-	Wget 1.21.2 (Ubuntu 64-bit only)
 -	Git 2.44.0
 -	Packer 1.10.2
 -	Terraform 1.7.4
@@ -311,7 +311,7 @@ Perform the following steps to install the needed software:
     sudo apt install curl
     ```
 
-2.	Install [Wget 1.21.1](https://www.gnu.org/software/wget/manual/wget.html) for Ubuntu 64-bit.  
+2.	Install [Wget 1.21.2](https://www.gnu.org/software/wget/manual/wget.html) for Ubuntu 64-bit.  
     ```bash
     sudo apt install wget
     ```
