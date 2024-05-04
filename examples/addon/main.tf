@@ -123,7 +123,7 @@ module "addons" {
       namespace        = "appdynamics"
       create_namespace = true
       chart            = "appdynamics-operators"
-#     chart_version    = "1.19.289"
+#     chart_version    = "1.21.368"
       repository       = "https://appdynamics.jfrog.io/artifactory/appdynamics-cloud-helmcharts"
       wait             = true
       wait_for_jobs    = true
@@ -150,7 +150,7 @@ resource "helm_release" "cisco_cloud_observability_collectors" {
   namespace        = "appdynamics"
   create_namespace = true
   chart            = "appdynamics-collectors"
-# version          = "1.19.1062"
+# version          = "1.21.1264"
   repository       = "https://appdynamics.jfrog.io/artifactory/appdynamics-cloud-helmcharts"
   wait             = true
   wait_for_jobs    = true
